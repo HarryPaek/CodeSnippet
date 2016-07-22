@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHooking.Data", "EventH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHooking.Business", "EventHooking.Business\EventHooking.Business.csproj", "{5C480C72-56A2-4A78-A22E-F6EEB240F42E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventCancelExample", "EventCancelExample\EventCancelExample.csproj", "{F027272F-D76C-4B47-AE03-419A11136EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomEventExample", "CustomEventExample\CustomEventExample.csproj", "{6758B3FA-97A8-4E4E-AB3D-73A191ABFC17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{5C480C72-56A2-4A78-A22E-F6EEB240F42E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C480C72-56A2-4A78-A22E-F6EEB240F42E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C480C72-56A2-4A78-A22E-F6EEB240F42E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F027272F-D76C-4B47-AE03-419A11136EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F027272F-D76C-4B47-AE03-419A11136EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F027272F-D76C-4B47-AE03-419A11136EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F027272F-D76C-4B47-AE03-419A11136EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6758B3FA-97A8-4E4E-AB3D-73A191ABFC17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6758B3FA-97A8-4E4E-AB3D-73A191ABFC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6758B3FA-97A8-4E4E-AB3D-73A191ABFC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6758B3FA-97A8-4E4E-AB3D-73A191ABFC17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
