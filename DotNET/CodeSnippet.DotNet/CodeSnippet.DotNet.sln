@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomEventExample", "Custo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrapTwoInterfaceEvents", "WrapTwoInterfaceEvents\WrapTwoInterfaceEvents.csproj", "{F7602118-D714-4517-86F6-98CE7AF17EBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormApplication", "WebFormApplication\WebFormApplication.csproj", "{E2376D0A-5E68-4DD9-91AE-E1A7BC57032A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayIndexer", "ArrayIndexer\ArrayIndexer.csproj", "{E7515610-087C-4A8D-A034-7AE8C43E5B2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{F7602118-D714-4517-86F6-98CE7AF17EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7602118-D714-4517-86F6-98CE7AF17EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7602118-D714-4517-86F6-98CE7AF17EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2376D0A-5E68-4DD9-91AE-E1A7BC57032A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2376D0A-5E68-4DD9-91AE-E1A7BC57032A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2376D0A-5E68-4DD9-91AE-E1A7BC57032A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2376D0A-5E68-4DD9-91AE-E1A7BC57032A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7515610-087C-4A8D-A034-7AE8C43E5B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7515610-087C-4A8D-A034-7AE8C43E5B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7515610-087C-4A8D-A034-7AE8C43E5B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7515610-087C-4A8D-A034-7AE8C43E5B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
