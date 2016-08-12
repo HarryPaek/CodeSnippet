@@ -1,0 +1,21 @@
+WITH tree_query(SeqNo,P_SeqNo,DeptName,sort, depth_fullname)  AS
+      (
+      SELECT
+      SeqNo
+      , P_SeqNo
+      , DeptName
+      , ''||SeqNo as sort
+      , ''||DeptName as depth_fullname
+      FROM ce_dept
+      WHERE P_SeqNo = 0
+      UNION ALL
+      SELECT
+      B.SeqNo
+      , B.P_SeqNo
+      , B.DeptName
+      , C.sort || ' > ' || B.SeqNo as sort
+      , C.depth_fullname || ' > ' || B.DeptName as  depth_fullname
+      FROM  ce_dept B, tree_query C
+      WHERE B.P_SeqNo = C.SeqNo
+      )
+      SELECT sort, SeqNo, P_SeqNo, DeptName,depth_fullname FROM tree_query order by sort
