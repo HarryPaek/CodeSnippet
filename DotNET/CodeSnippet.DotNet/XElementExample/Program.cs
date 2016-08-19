@@ -12,17 +12,14 @@ namespace XElementExample
     {
         static void Main(string[] args)
         {
-            XElement root = new XElement("Record",
-                                         new XAttribute("Epoc", 2000),
-                                         new XElement("Name",
-                                                      new XElement("First", "Mike"),
-                                                      new XElement("Second")),
-                                         new XElement("Address"));
+            XmlIntoText texter = new XmlIntoText();
 
-            Console.WriteLine("Xml Text = [{0}]", root.ToString(SaveOptions.DisableFormatting));
+            Console.WriteLine("Xml Text = [{0}]", texter.GetXmlText());
 
-            XDocument xDoc = new XDocument(root);
-            Console.WriteLine("xDoc Text = [{0}]", xDoc.ToString(SaveOptions.DisableFormatting));
+            TextIntoXml xmler = new TextIntoXml();
+            var xmlDocuemnt = xmler.GetXmlDocument();
+
+            Console.WriteLine("xDoc Text = [{0}]", xmlDocuemnt.ToString());
 
             Console.ReadLine();
         }
