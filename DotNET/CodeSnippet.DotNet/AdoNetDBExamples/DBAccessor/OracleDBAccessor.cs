@@ -13,12 +13,7 @@ namespace AdoNetDBExamples.DBAccessor
 {
     public class OracleDBAccessor : IDBAccessor
     {
-        public DbDataReader ExecuteReader(string sql)
-        {
-            return ExecuteReader(sql, null);
-        }
-
-        public DbDataReader ExecuteReader(string sql, List<DbParameter> parameters)
+        public DbDataReader ExecuteReader(string sql, List<DbParameter> parameters = null)
         {
             OracleConnection connection = new OracleConnection(GetConnectionString());
             OracleCommand command = new OracleCommand(sql, connection);
@@ -37,12 +32,7 @@ namespace AdoNetDBExamples.DBAccessor
             return command.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
-        public int ExecuteNonQuery(string sql)
-        {
-            return ExecuteNonQuery(sql, null);
-        }
-
-        public int ExecuteNonQuery(string sql, List<DbParameter> parameters)
+        public int ExecuteNonQuery(string sql, List<DbParameter> parameters = null)
         {
             using (OracleConnection connection = new OracleConnection(GetConnectionString()))
             {
@@ -65,12 +55,7 @@ namespace AdoNetDBExamples.DBAccessor
             }
         }
 
-        public DataTable ExecuteSelect(string sql)
-        {
-            return ExecuteSelect(sql, null);
-        }
-
-        public DataTable ExecuteSelect(string sql, List<DbParameter> parameters)
+        public DataTable ExecuteSelect(string sql, List<DbParameter> parameters = null)
         {
             using (OracleConnection connection = new OracleConnection(GetConnectionString()))
             {
@@ -84,8 +69,6 @@ namespace AdoNetDBExamples.DBAccessor
                         foreach (OracleParameter p in parameters)
                             command.Parameters.Add(p);
                     }
-
-                    // connection.Open();
 
                     OracleDataAdapter adp = new OracleDataAdapter(command);
 
@@ -111,12 +94,7 @@ namespace AdoNetDBExamples.DBAccessor
             }
         }
 
-        public object ExecuteScalar(string sql)
-        {
-            return ExecuteScalar(sql, null);
-        }
-
-        public object ExecuteScalar(string sql, List<DbParameter> parameters)
+        public object ExecuteScalar(string sql, List<DbParameter> parameters = null)
         {
             using (OracleConnection connection = new OracleConnection(GetConnectionString()))
             {
