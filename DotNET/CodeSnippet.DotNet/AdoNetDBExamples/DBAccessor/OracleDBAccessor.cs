@@ -19,6 +19,7 @@ namespace AdoNetDBExamples.DBAccessor
             OracleCommand command = new OracleCommand(sql, connection);
 
             command.CommandType = CommandType.Text;
+            command.BindByName = true;
             command.Parameters.Clear();
 
             if (parameters != null)
@@ -39,6 +40,7 @@ namespace AdoNetDBExamples.DBAccessor
                 using (OracleCommand command = new OracleCommand(sql))
                 {
                     command.CommandType = CommandType.Text;
+                    command.BindByName = true;
                     command.Parameters.Clear();
 
                     if (parameters != null)
@@ -62,6 +64,7 @@ namespace AdoNetDBExamples.DBAccessor
                 using (OracleCommand command = new OracleCommand(sql, connection))
                 {
                     command.CommandType = CommandType.Text;
+                    command.BindByName = true;
                     command.Parameters.Clear();
 
                     if (parameters != null)
@@ -101,6 +104,7 @@ namespace AdoNetDBExamples.DBAccessor
                 using (OracleCommand command = new OracleCommand(sql))
                 {
                     command.CommandType = CommandType.Text;
+                    command.BindByName = true;
                     command.Parameters.Clear();
 
                     if (parameters != null)
