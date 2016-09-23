@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomEventSample.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,21 @@ namespace ConsoleApplication1
         private int threshold;
         private int total;
 
-        public event EventHandler<ThresholdReachedEventArgs> ThresholdReached;
-
         public Counter(int threshold)
         {
             this.threshold = threshold;
         }
+
+
+        #region Properties
+
+        public IThresholdReaching ThresholdReachingEventHandler { get; set; }
+        public IThresholdReached  ThresholdReachedEventHandler { get; set; }
+
+        #endregion
+
+
+        #region Public Methods
 
         public void Add(int x)
         {
@@ -24,21 +34,51 @@ namespace ConsoleApplication1
 
             if(total >= threshold)
             {
-                ThresholdReachedEventArgs args = new ThresholdReachedEventArgs {
+                ThresholdReachingEventArgs reachingArgs = new ThresholdReachingEventArgs
+                {
                     Threshold = threshold,
                     TimeReached = DateTime.Now
                 };
 
-                OnThresholdReached(args);
+                OnThresholdReaching(reachingArgs);
+
+                if (reachingArgs.Cancel)  // if cancelled, return
+                {
+                    total -= x;           // rollback;
+                    return;
+                }
+
+                ThresholdReachedEventArgs reachedArgs = new ThresholdReachedEventArgs {
+                    Threshold = threshold,
+                    TimeReached = DateTime.Now
+                };
+
+                OnThresholdReached(reachedArgs);
             }
         }
 
+        #endregion
+
+
+        #region Protected Methods
+
         protected virtual void OnThresholdReached(ThresholdReachedEventArgs e)
         {
-            EventHandler<ThresholdReachedEventArgs> handler = ThresholdReached;
-
-            if (handler != null)
-                handler(this, e);
+            if (ThresholdReachedEventHandler != null)
+                ThresholdReachedEventHandler.Handle(this, e);
         }
+
+        protected virtual void OnThresholdReaching(ThresholdReachingEventArgs e)
+        {
+            if (ThresholdReachingEventHandler != null)
+                ThresholdReachingEventHandler.Handle(this, e);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+
+        #endregion
     }
 }
