@@ -20,8 +20,8 @@ namespace ConsoleApplication1
 
         #region Properties
 
-        public IThresholdReaching ThresholdReachingEventHandler { get; set; }
-        public IThresholdReached  ThresholdReachedEventHandler { get; set; }
+        public IThresholdEventDelegate<ThresholdReachingEventArgs> ThresholdReachingEventHandler { get; set; }
+        public IThresholdEventDelegate<ThresholdReachedEventArgs> ThresholdReachedEventHandler { get; set; }
 
         #endregion
 

@@ -11,13 +11,13 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            IThresholdReaching thresholdReachingEventHandler = new ImplThresholdReaching();
-            thresholdReachingEventHandler.ThresholdReaching += counter_ThresholdReaching1;
-            thresholdReachingEventHandler.ThresholdReaching += counter_ThresholdReaching2;
+            IThresholdEventDelegate<ThresholdReachingEventArgs> thresholdReachingEventHandler = new ImplThresholdEventDelegate<ThresholdReachingEventArgs>();
+            thresholdReachingEventHandler.EventDelegate += counter_ThresholdReaching1;
+            thresholdReachingEventHandler.EventDelegate += counter_ThresholdReaching2;
 
-            IThresholdReached thresholdReachedEventHandler = new ImplThresholdReached();
-            thresholdReachedEventHandler.ThresholdReached += counter_ThresholdReached1;
-            thresholdReachedEventHandler.ThresholdReached += counter_ThresholdReached2;
+            IThresholdEventDelegate<ThresholdReachedEventArgs> thresholdReachedEventHandler = new ImplThresholdEventDelegate<ThresholdReachedEventArgs>();
+            thresholdReachedEventHandler.EventDelegate += counter_ThresholdReached1;
+            thresholdReachedEventHandler.EventDelegate += counter_ThresholdReached2;
 
             Counter counter = new Counter(new Random().Next(10, 20)) { ThresholdReachedEventHandler = thresholdReachedEventHandler, ThresholdReachingEventHandler = thresholdReachingEventHandler };
 

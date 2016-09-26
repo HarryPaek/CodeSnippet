@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Counter.cs" />
+    <Compile Include="Events\ImplThresholdEventDelegate.cs" />
     <Compile Include="Events\ImplThresholdReached.cs" />
     <Compile Include="Events\ImplThresholdReaching.cs" />
+    <Compile Include="Events\IThresholdEventDelegate.cs" />
     <Compile Include="Events\IThresholdReached.cs" />
     <Compile Include="Events\IThresholdReaching.cs" />
     <Compile Include="Events\ThresholdReachedEventArgs.cs" />
