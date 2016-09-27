@@ -16,7 +16,7 @@ namespace CustomEventSample.Events
             EventHandler<ThresholdReachedEventArgs> handler = ThresholdReached;
 
             if (handler != null)
-                handler(this, e);
+                handler(sender, e);
         }
     }
 }

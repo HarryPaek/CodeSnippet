@@ -13,7 +13,7 @@ namespace ConsoleApplication1
         {
             IThresholdEventDelegate<ThresholdReachingEventArgs> thresholdReachingEventHandler = new ImplThresholdEventDelegate<ThresholdReachingEventArgs>();
             thresholdReachingEventHandler.EventDelegate += counter_ThresholdReaching1;
-            thresholdReachingEventHandler.EventDelegate += counter_ThresholdReaching2;
+            // thresholdReachingEventHandler.EventDelegate += counter_ThresholdReaching2;
 
             IThresholdEventDelegate<ThresholdReachedEventArgs> thresholdReachedEventHandler = new ImplThresholdEventDelegate<ThresholdReachedEventArgs>();
             thresholdReachedEventHandler.EventDelegate += counter_ThresholdReached1;
@@ -36,13 +36,13 @@ namespace ConsoleApplication1
         static void counter_ThresholdReaching1(object sender, ThresholdReachingEventArgs e)
         {
             Console.WriteLine("##### 00001 The threshold of {0} was reaching at {1}.", e.Threshold, e.TimeReached);
-            e.Cancel = true;
+            // e.Cancel = true;
         }
 
         static void counter_ThresholdReaching2(object sender, ThresholdReachingEventArgs e)
         {
             Console.WriteLine("##### 00002 The threshold of {0} was reaching at {1}.", e.Threshold, e.TimeReached);
-            e.Cancel = true;
+            // e.Cancel = true;
         }
 
         static void counter_ThresholdReached1(object sender, ThresholdReachedEventArgs e)
