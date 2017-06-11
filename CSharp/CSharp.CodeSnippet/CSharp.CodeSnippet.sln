@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackToAlgorithms", "BackToA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqExamples", "LinqExamples\LinqExamples.csproj", "{517EDA6A-F1F7-4540-BBE8-34BAD9E8CD0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication", "WindowsFormsApplication1\WindowsFormsApplication.csproj", "{7E56F598-5CA5-4524-A958-92BDEF48E188}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{517EDA6A-F1F7-4540-BBE8-34BAD9E8CD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{517EDA6A-F1F7-4540-BBE8-34BAD9E8CD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{517EDA6A-F1F7-4540-BBE8-34BAD9E8CD0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E56F598-5CA5-4524-A958-92BDEF48E188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E56F598-5CA5-4524-A958-92BDEF48E188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E56F598-5CA5-4524-A958-92BDEF48E188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E56F598-5CA5-4524-A958-92BDEF48E188}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
