@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormModalApp", "WinFormModalApp\WinFormModalApp.csproj", "{38321C81-BA73-4D60-A7F2-ECA2E3DC2CBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionTrees", "ExpressionTrees\ExpressionTrees.csproj", "{8403CD33-BDAB-46D8-B6E3-ED49A2A2313B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{38321C81-BA73-4D60-A7F2-ECA2E3DC2CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38321C81-BA73-4D60-A7F2-ECA2E3DC2CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38321C81-BA73-4D60-A7F2-ECA2E3DC2CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8403CD33-BDAB-46D8-B6E3-ED49A2A2313B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8403CD33-BDAB-46D8-B6E3-ED49A2A2313B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8403CD33-BDAB-46D8-B6E3-ED49A2A2313B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8403CD33-BDAB-46D8-B6E3-ED49A2A2313B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
