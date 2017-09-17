@@ -43,16 +43,19 @@ Private Const FCS_COMMON_COLUMN_PREFIX_WIRING_MACRO             As String = "AL"
 
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
 Private Sub Class_Terminate()
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -81,10 +84,18 @@ Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingShe
     
     needProcessing = False
     localRowIndex = rowIndex
-    fcsCNA = cellValues.Item(COLUMN_INDEX_TEXT_FCS_CNA)
-    fcsCNNo = cellValues.Item(COLUMN_INDEX_TEXT_FCS_CN_NO)
-    fcsNest = cellValues.Item(COLUMN_INDEX_TEXT_FCS_NEST)
-    fcsCNB = cellValues.Item(COLUMN_INDEX_TEXT_FCS_CNB)
+    
+    ''fcsCNA = cellValues.Item(COLUMN_INDEX_TEXT_FCS_CNA)
+    fcsCNA = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_FCS_CNA)                                          'CY, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''fcsCNNo = cellValues.Item(COLUMN_INDEX_TEXT_FCS_CN_NO)
+    fcsCNNo = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_FCS_CN_NO)                                       'EH, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+    
+    ''fcsNest = cellValues.Item(COLUMN_INDEX_TEXT_FCS_NEST)
+    fcsNest = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_FCS_NEST)                                        'EK, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+        
+    ''fcsCNB = cellValues.Item(COLUMN_INDEX_TEXT_FCS_CNB)
+    fcsCNB = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_FCS_CNB)                                          'CZ, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
     variantIndex = 1                                                                                     '  Variant 유형 "B"에서 시작
         

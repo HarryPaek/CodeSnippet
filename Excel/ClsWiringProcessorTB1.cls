@@ -28,12 +28,14 @@ Private Const CELL_ADDRESS_WIRING_DIAGRAM_DTB        As String = "M7"           
 Private Const CELL_ADDRESS_WIRING_DIAGRAM_TB1_1      As String = "O5"             ' DATA3 시트
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     'MsgBox "ProcessorTB1 Class is being initialized"
     
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
@@ -42,6 +44,7 @@ Private Sub Class_Terminate()
     'MsgBox "ProcessorTB1 Class is being terminated"
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -53,23 +56,36 @@ End Sub
 '================================================================================================================================================================
 Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingSheet As Worksheet, wiringDiagramSheet As Worksheet, cellValues As Collection) As Long
 
-    Dim needProcessing As Boolean                                                                                                           ' 프로세싱 여부
-    Dim localRowIndex As Long
-    Dim tbGroupNo As Variant
+    Dim needProcessing    As Boolean                                                                                                        ' 프로세싱 여부
+    Dim localRowIndex     As Long
+    Dim tbGroupNo         As Variant
+    Dim tbFuse            As Variant
+    Dim tbDisconnect      As Variant
+    Dim tb13              As Variant
     Dim selectedCellValue As Variant                                                                                                        ' 복사 대상으로 선택된 DATA3 Cell 값
     
     needProcessing = False
     localRowIndex = rowIndex
-    tbGroupNo = cellValues.Item(COLUMN_INDEX_TEXT_TB_GRP_NO)
     
+    ''tbGroupNo = cellValues.Item(COLUMN_INDEX_TEXT_TB_GRP_NO)
+    tbGroupNo = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TB_GRP_NO)                                 'BK, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tbFuse = cellValues.Item(COLUMN_INDEX_TEXT_TB_FUSE)
+    tbFuse = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TB_FUSE)                                      'GV, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tbDisconnect = cellValues.Item(COLUMN_INDEX_TEXT_TB_DISCONNECT)
+    tbDisconnect = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TB_DISCONNECT)                          'GW, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tb13 = cellValues.Item(COLUMN_INDEX_TEXT_TB1_3)
+    tb13 = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TB1_3)                                          'BN, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
-    If (cellValues.Item(COLUMN_INDEX_TEXT_TB1_3) > 0 And tbGroupNo <> "") Then                                                              ' TB1-3 값, TB GRP NO1 값이 있으면
+    If (tb13 > 0 And tbGroupNo <> "") Then                                                                                                  ' TB1-3 값, TB GRP NO1 값이 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_TB1_1)                                                      ' TB1-1 매크로 입력
-    ElseIf (cellValues.Item(COLUMN_INDEX_TEXT_TB_DISCONNECT) > 0) Then                                                                      ' TB_Disconnection 값이 있으면
+    ElseIf (tbDisconnect > 0) Then                                                                                                          ' TB_Disconnection 값이 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_DTB)                                                        ' DTB 매크로 입력
-    ElseIf (cellValues.Item(COLUMN_INDEX_TEXT_TB_FUSE) > 0) Then                                                                            ' TB_Fuse 값이 있으면
+    ElseIf (tbFuse > 0) Then                                                                                                                ' TB_Fuse 값이 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_FTB_1)                                                      ' FTB1 매크로 입력
     ElseIf (tbGroupNo > 0) Then                                                                                                             ' TB GRP NO1 값이 있으면

@@ -24,16 +24,19 @@ Private Const CELL_ADDRESS_WIRING_DIAGRAM_TB_3       As String = "U5"           
 Private Const CELL_ADDRESS_WIRING_DIAGRAM_TB3_1      As String = "W5"             ' DATA3 시트
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
 Private Sub Class_Terminate()
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -45,20 +48,25 @@ End Sub
 '================================================================================================================================================================
 Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingSheet As Worksheet, wiringDiagramSheet As Worksheet, cellValues As Collection) As Long
 
-    Dim needProcessing As Boolean                                                                                                                          ' 프로세싱 여부
-    Dim localRowIndex As Long
-    Dim tbGroupNo3 As Variant
+    Dim needProcessing    As Boolean                                                                                                                          ' 프로세싱 여부
+    Dim localRowIndex     As Long
+    Dim tbGroupNo3        As Variant
+    Dim tb33              As Variant
     Dim selectedCellValue As Variant                                                                                                                       ' 복사 대상으로 선택된 DATA3 Cell 값
     
     needProcessing = False
     localRowIndex = rowIndex
-    tbGroupNo3 = cellValues.Item(COLUMN_INDEX_TEXT_TB_GRP_NO3)
+
+    ''tbGroupNo3 = cellValues.Item(COLUMN_INDEX_TEXT_TB_GRP_NO3)
+    tbGroupNo3 = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TB_GRP_NO3)                               'CI, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tb33 = cellValues.Item(COLUMN_INDEX_TEXT_TB3_3)
+    tb33 = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TB3_3)                                          'CL, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
-    
-    If (cellValues.Item(COLUMN_INDEX_TEXT_TB3_3) > 0 And tbGroupNo3 <> "") Then                                                                            ' TB3-3 값, TB GRP NO3 값이 있으면
+    If (tb33 > 0 And tbGroupNo3 <> "") Then                                                                                                                ' TB3-3 값, TB GRP NO3 값이 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_TB3_1)                                                                     ' TB3-1 매크로 입력
-    ElseIf (tbGroupNo3 > 0) Then                                                                                                                           ' TB GRP NO2가 있으면
+    ElseIf (tbGroupNo3 > 0) Then                                                                                                                           ' TB GRP NO3가 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_TB_3)                                                                      ' TB3 매크로 입력
     End If

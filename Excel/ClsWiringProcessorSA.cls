@@ -24,16 +24,19 @@ Private Const CELL_ADDRESS_WIRING_DIAGRAM_SA_1        As String = "R22"         
 Private Const CELL_ADDRESS_WIRING_DIAGRAM_SA_2        As String = "T22"             ' DATA3 시트
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
 Private Sub Class_Terminate()
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -45,17 +48,25 @@ End Sub
 '================================================================================================================================================================
 Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingSheet As Worksheet, wiringDiagramSheet As Worksheet, cellValues As Collection) As Long
 
-    Dim needProcessing As Boolean                                                                                                                          ' 프로세싱 여부
-    Dim localRowIndex As Long
+    Dim needProcessing    As Boolean                                                                                                                       ' 프로세싱 여부
+    Dim localRowIndex     As Long
+    Dim sa1Name           As Variant
+    Dim sa2Name           As Variant
     Dim selectedCellValue As Variant                                                                                                                       ' 복사 대상으로 선택된 DATA3 Cell 값
     
     needProcessing = False
     localRowIndex = rowIndex
+
+    ''sa1Name = cellValues.Item(COLUMN_INDEX_TEXT_SA1_NAME)
+    sa1Name = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_SA1_NAME)                                    'DJ, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
-    If (cellValues.Item(COLUMN_INDEX_TEXT_SA2_NAME) > 0) Then                                                                                              ' SA2 NAME 값이 있으면,
+    ''sa2Name = cellValues.Item(COLUMN_INDEX_TEXT_SA2_NAME)
+    sa2Name = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_SA2_NAME)                                    'DQ, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+    
+    If (sa2Name > 0) Then                                                                                                                                  ' SA2 NAME 값이 있으면,
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_SA_2)                                                                      ' SA2 매크로 입력
-    ElseIf (cellValues.Item(COLUMN_INDEX_TEXT_SA1_NAME) > 0) Then                                                                                          ' SA1 NAME 값이 있으면
+    ElseIf (sa1Name > 0) Then                                                                                                                              ' SA1 NAME 값이 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_SA_1)                                                                      ' SA1 매크로 입력
     End If

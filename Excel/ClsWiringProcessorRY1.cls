@@ -24,16 +24,19 @@ Private Const CELL_ADDRESS_WIRING_DIAGRAM_RY_1       As String = "M22"          
 Private Const CELL_ADDRESS_WIRING_DIAGRAM_RY_2       As String = "O22"             ' DATA3 시트
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
 Private Sub Class_Terminate()
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -45,17 +48,22 @@ End Sub
 '================================================================================================================================================================
 Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingSheet As Worksheet, wiringDiagramSheet As Worksheet, cellValues As Collection) As Long
 
-    Dim needProcessing As Boolean                                                                                                                          ' 프로세싱 여부
-    Dim localRowIndex As Long
-    Dim ryName As Variant
+    Dim needProcessing    As Boolean                                                                                                                       ' 프로세싱 여부
+    Dim localRowIndex     As Long
+    Dim ryName            As Variant
+    Dim ryPower           As Variant
     Dim selectedCellValue As Variant                                                                                                                       ' 복사 대상으로 선택된 DATA3 Cell 값
     
     needProcessing = False
     localRowIndex = rowIndex
-    ryName = cellValues.Item(COLUMN_INDEX_TEXT_RY_NAME)
+
+    ''ryName = cellValues.Item(COLUMN_INDEX_TEXT_RY_NAME)
+    ryName = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_RY_NAME)                                      'DC, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
+    ''ryPower = cellValues.Item(COLUMN_INDEX_TEXT_RY_POWER)
+    ryPower = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_RY_POWER)                                    'DH, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
-    If (cellValues.Item(COLUMN_INDEX_TEXT_RY_POWER) > 0 And ryName <> "") Then                                                                             ' RY NAME 값, RY POWER 값이 있으면
+    If (ryPower > 0 And ryName <> "") Then                                                                                                                 ' RY NAME 값, RY POWER 값이 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_RY_2)                                                                      ' RY2 매크로 입력
     ElseIf (ryName > 0) Then                                                                                                                               ' RY NAME 값이 있으면

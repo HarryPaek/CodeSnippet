@@ -24,12 +24,14 @@ Private Const CELL_ADDRESS_WIRING_DIAGRAM_JB         As String = "G5"           
 Private Const CELL_ADDRESS_WIRING_DIAGRAM_JB_1       As String = "I5"             ' DATA3 시트
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     'MsgBox "ProcessorJB Class is being initialized"
     
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
@@ -38,6 +40,7 @@ Private Sub Class_Terminate()
     'MsgBox "ProcessorJB Class is being terminated"
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -48,17 +51,22 @@ End Sub
 '================================================================================================================================================================
 Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingSheet As Worksheet, wiringDiagramSheet As Worksheet, cellValues As Collection) As Long
 
-    Dim needProcessing As Boolean                                                                                                                          ' 프로세싱 여부
-    Dim localRowIndex As Long
-    Dim jbGroupNo As Variant
+    Dim needProcessing    As Boolean                                                                                                                       ' 프로세싱 여부
+    Dim localRowIndex     As Long
+    Dim jbGroupNo         As Variant
+    Dim jb3               As Variant
     Dim selectedCellValue As Variant                                                                                                                       ' 복사 대상으로 선택된 DATA3 Cell 값
     
     needProcessing = False
     localRowIndex = rowIndex
-    jbGroupNo = cellValues.Item(COLUMN_INDEX_TEXT_JB_GRP_NO)
     
+    ''jbGroupNo = cellValues.Item(COLUMN_INDEX_TEXT_JB_GRP_NO)
+    jbGroupNo = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_JB_GRP_NO)                                 'AI, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
-    If (cellValues.Item(COLUMN_INDEX_TEXT_JB_3) > 0 And jbGroupNo <> "") Then                                                                              ' JB(3) 값, JB GRP NO 값이 있으면
+    ''jb3 = cellValues.Item(COLUMN_INDEX_TEXT_JB_3)
+    jb3 = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_JB_3)                                            'AL, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+    
+    If (jb3 > 0 And jbGroupNo <> "") Then                                                                                                                  ' JB(3) 값, JB GRP NO 값이 있으면
        needProcessing = True
        selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_JB_1)                                                                      ' JB-1 매크로 입력
     ElseIf (jbGroupNo > 0) Then                                                                                                                            ' JB GRP NO가 있으면

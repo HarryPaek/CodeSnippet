@@ -34,6 +34,8 @@ Private Const CELL_VALUE_PAGE_DESCRIPTION            As String = "Wiring Diagram
 
 Private progressBar                                  As ClsProgressBar
 Private clsCommon                                    As ClsWiringCommon
+Private collectionExtension                          As ClsCollectionExtension
+
 Private jbProcessor                                  As ClsWiringProcessorJB
 Private tb1Processor                                 As ClsWiringProcessorTB1
 Private tb2Processor                                 As ClsWiringProcessorTB2
@@ -52,6 +54,8 @@ Private Sub Class_Initialize()
     
     Set progressBar = New ClsProgressBar
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
+
     Set jbProcessor = New ClsWiringProcessorJB
     Set tb1Processor = New ClsWiringProcessorTB1
     Set tb2Processor = New ClsWiringProcessorTB2
@@ -72,6 +76,8 @@ Private Sub Class_Terminate()
     
     Set progressBar = Nothing
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
+
     Set jbProcessor = Nothing
     Set tb1Processor = Nothing
     Set tb2Processor = Nothing
@@ -221,21 +227,30 @@ End Sub
 ' 복사한 IO 데이터에 대하여, 기본 매크로, 페이지 No, Variant 및 속성을 설정함
 '================================================================================================================================================================
 Private Sub SetBasicMacroAndProperty(rowIndex As Long, dataIndex As Long, workingSheet As Worksheet, wiringDiagramSheet As Worksheet, cellValues As Collection)
+
+    Dim pidTag                     As Variant
+    Dim tb3                        As Variant
                                      
     ' 1. Page Number, Variant
     workingSheet.Cells(rowIndex, Constants.COLUMN_INDEX_PAGE_NAME).value = clsCommon.ToPageNumber(dataIndex)                                                 ' Page Number Setting
     workingSheet.Cells(rowIndex, Constants.COLUMN_INDEX_VARIANT).value = clsCommon.ToVariantText(dataIndex)                                                  ' Eplan Variant 값 입력
     
+    ''pidTag = cellValues.Item(COLUMN_INDEX_TEXT_PID_TAG)
+    pidTag = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_PID_TAG)                                          'R, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tb3 = cellValues.Item(COLUMN_INDEX_TEXT_TB3)
+    tb3 = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TB3)                                                 'W, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
     ' 2. 기본 매크로 값
-    If (cellValues.Item(COLUMN_INDEX_TEXT_PID_TAG) > 0 And cellValues.Item(COLUMN_INDEX_TEXT_TB3) > 0) Then                                                  ' P&ID TAG 및 TB3 값이 있으면
+    If (pidTag > 0 And tb3 > 0) Then                                                                                                                         ' P&ID TAG 및 TB3 값이 있으면
         workingSheet.Cells(rowIndex, Constants.COLUMN_INDEX_MACRO_NAME).value = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_PID_1)                  ' PID-1 매크로 입력
         workingSheet.Cells(rowIndex, Constants.COLUMN_INDEX_SINGLE_LINE2).value = Constants.CELL_VALUE_SINGLE_LINE_2
     
-    ElseIf (cellValues.Item(COLUMN_INDEX_TEXT_PID_TAG) > 0) Then                                                                                             ' P&ID TAG가 있으면
+    ElseIf (pidTag > 0) Then                                                                                                                                 ' P&ID TAG가 있으면
         workingSheet.Cells(rowIndex, Constants.COLUMN_INDEX_MACRO_NAME).value = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_PID)                    ' PID 매크로 입력
         workingSheet.Cells(rowIndex, Constants.COLUMN_INDEX_SINGLE_LINE2).value = Constants.CELL_VALUE_SINGLE_LINE_2
     
-    ElseIf (cellValues.Item(COLUMN_INDEX_TEXT_PID_TAG) = "") Then
+    ElseIf (pidTag = "") Then
         workingSheet.Cells(rowIndex, Constants.COLUMN_INDEX_MACRO_NAME).value = ""                                                                           ' Constants.CELL_VALUE_SPARE
         
     End If

@@ -52,16 +52,19 @@ Private Const TBA_COMMON_COLUMN_PREFIX_TBA_1_MACRO              As String = "AG"
 
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
 Private Sub Class_Terminate()
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -89,10 +92,18 @@ Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingShe
     
     needProcessing = False
     localRowIndex = rowIndex
-    tbaCNNo = cellValues.Item(COLUMN_INDEX_TEXT_TBA_CN_NO)
-    tbaIntPower = cellValues.Item(COLUMN_INDEX_TEXT_TBA_INT_POWER)
-    tbaExtPower = cellValues.Item(COLUMN_INDEX_TEXT_TBA_EXT_POWER)
-    tbaTbd3 = cellValues.Item(COLUMN_INDEX_TEXT_TBA_TBD_3)
+
+    ''tbaCNNo = cellValues.Item(COLUMN_INDEX_TEXT_TBA_CN_NO)
+    tbaCNNo = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TBA_CN_NO)                                   'EH, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tbaIntPower = cellValues.Item(COLUMN_INDEX_TEXT_TBA_INT_POWER)
+    tbaIntPower = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TBA_INT_POWER)                           'FM, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tbaExtPower = cellValues.Item(COLUMN_INDEX_TEXT_TBA_EXT_POWER)
+    tbaExtPower = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TBA_EXT_POWER)                           'FN, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
+    ''tbaTbd3 = cellValues.Item(COLUMN_INDEX_TEXT_TBA_TBD_3)
+    tbaTbd3 = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_TBA_TBD_3)                                   'CX, IO 시트에 없는 경우를 대비하여 Extension Method 사용
     
     variantIndex = 1                                                                                     '  Variant 유형 "B"에서 시작
         

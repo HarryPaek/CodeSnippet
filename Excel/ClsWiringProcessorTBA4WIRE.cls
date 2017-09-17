@@ -24,16 +24,19 @@ Private Const CELL_ADDRESS_WIRING_DIAGRAM_4WIRE_CN_NO_AA46      As String = "AA4
 Private Const CELL_ADDRESS_WIRING_DIAGRAM_4WIRE_MACRO           As String = "AD46"            ' DATA3 시트
 
 Private clsCommon As ClsWiringCommon
+Private collectionExtension As ClsCollectionExtension
 
 Private Sub Class_Initialize()
 
     Set clsCommon = New ClsWiringCommon
+    Set collectionExtension = New ClsCollectionExtension
     
 End Sub
 
 Private Sub Class_Terminate()
     
     Set clsCommon = Nothing
+    Set collectionExtension = Nothing
 
 End Sub
 
@@ -52,7 +55,10 @@ Public Function Process(rowIndex As Long, ioListDataRowIndex As Long, workingShe
     Dim selectedCellValue          As Variant                                                                                                              ' 복사 대상으로 선택된 DATA3 Cell 값
     
     localRowIndex = rowIndex
-    tba4WireTbdPlus = cellValues.Item(COLUMN_INDEX_TEXT_4WIRE_TBD_PLUS)
+
+    ''tba4WireTbdPlus = cellValues.Item(COLUMN_INDEX_TEXT_4WIRE_TBD_PLUS)
+    tba4WireTbdPlus = collectionExtension.TryGetValue(cellValues, COLUMN_INDEX_TEXT_4WIRE_TBD_PLUS)                      'CV, IO 시트에 없는 경우를 대비하여 Extension Method 사용
+
     tba4WireDiagramSheetValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_4WIRE_CN_NO_AA46)
     selectedCellValue = wiringDiagramSheet.Range(CELL_ADDRESS_WIRING_DIAGRAM_4WIRE_MACRO)
     
