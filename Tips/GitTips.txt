@@ -1,0 +1,21 @@
+# Git Hub Config
+
+git config --local user.email "paek.harry@gmail.com"
+
+git config --local user.name "Harry Paek"
+
+
+# Git NAS01 Clone
+
+git clone ssh://ek050_harry@133.x.x.221:xx22/~/GitRepo/EPLAN.git IntEPLAN
+
+git clone ssh://ek050_harry@133.x.x.221:xx22/~/GitRepo/SKHynix.git IntHSK
+
+git config --local user.email "paek.harry@eplan.co.kr"
+
+git config --local user.name "Harry Paek"
+
+
+# Git 공통
+
+git config --local -l
