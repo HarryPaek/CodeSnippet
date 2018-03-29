@@ -19,3 +19,9 @@ git config --local user.name "Harry Paek"
 # Git 공통
 
 git config --local -l
+
+# Add Remote Repository
+
+git remote add origin ssh://ek050_harry@133.x.x.221:xx22/~/GitRepo/LSCable.git
+
+git push --set-upstream origin master
