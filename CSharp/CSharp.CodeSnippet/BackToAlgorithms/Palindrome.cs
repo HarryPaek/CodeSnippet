@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackToAlgorithms
 {
@@ -28,15 +25,6 @@ namespace BackToAlgorithms
         {
             Array.Reverse(chars);
             return GetString(chars);
-        }
-
-        public static void Main(string[] args)
-        {
-            string testString = "Noel sees Leon.";
-
-            Console.WriteLine("IsPalindrome(\"{0}\") = [{1}]", testString, IsPalindrome(testString));
-
-            Console.ReadLine();
         }
     }
 }
