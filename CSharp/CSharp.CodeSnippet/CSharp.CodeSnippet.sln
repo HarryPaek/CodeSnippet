@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassDefaultValue", "ClassD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormWithTimer", "WinFormWithTimer\WinFormWithTimer.csproj", "{F15B4252-4A78-4E2E-AF12-2C5BBAA1B266}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumTestApp", "EnumTestApp\EnumTestApp.csproj", "{D93F3963-567C-454A-A34B-EA5A2EDD65BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{F15B4252-4A78-4E2E-AF12-2C5BBAA1B266}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F15B4252-4A78-4E2E-AF12-2C5BBAA1B266}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F15B4252-4A78-4E2E-AF12-2C5BBAA1B266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D93F3963-567C-454A-A34B-EA5A2EDD65BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D93F3963-567C-454A-A34B-EA5A2EDD65BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D93F3963-567C-454A-A34B-EA5A2EDD65BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D93F3963-567C-454A-A34B-EA5A2EDD65BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
