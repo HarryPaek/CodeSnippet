@@ -1,0 +1,54 @@
+/*
+SELECT T.*
+  FROM TABLEA        T,
+       TABLE_B       M
+ WHERE T.EPLAN_NO    = M.EPLAN_NO
+   AND T.PART_NO     = M.PART_NO
+   AND M.TABLE_INDEX = 1;
+*/
+
+/*
+MERGE INTO TABLEA T
+USING TABLE_B     M
+   ON (T.EPLAN_NO = M.EPLAN_NO AND T.PART_NO = M.PART_NO AND M.TABLE_INDEX = 1)
+ WHEN MATCHED THEN
+      UPDATE SET
+          T.DESCRIPTION = M.DESCRIPTION,
+          T.MODEL       = M.MODEL,
+          T.MAKER       = M.MAKER,
+          T.EX_01       = NVL(T.EX_01, '') || M.TABLE_INDEX || ',MIG_1811,';
+*/
+
+
+UPDATE TABLEA T
+   SET (DESCRIPTION, MODEL, MAKER, EX_01)
+     = (SELECT M.DESCRIPTION, M.MODEL, M.MAKER, NVL(T.EX_01, '') || M.TABLE_INDEX || ',MIG_1811,'
+          FROM TABLE_B       M
+         WHERE T.EPLAN_NO    = M.EPLAN_NO
+           AND T.PART_NO     = M.PART_NO
+           AND M.TABLE_INDEX = 1
+           --AND ROWNUM        = 1
+       )
+ WHERE EXISTS
+     ( SELECT 1
+         FROM TABLE_B       M
+        WHERE T.EPLAN_NO    = M.EPLAN_NO
+          AND T.PART_NO     = M.PART_NO
+          AND M.TABLE_INDEX = 1
+     );
+
+/*       
+MERGE INTO TABLEA T
+USING TABLE_B     M
+   ON (T.EPLAN_NO = M.EPLAN_NO AND T.PART_NO = M.PART_NO AND M.TABLE_INDEX = 2)
+ WHEN MATCHED THEN
+      UPDATE SET
+          T.DESCRIPTION = M.DESCRIPTION,
+          T.MODEL       = M.MODEL,
+          T.MAKER       = M.MAKER,
+          T.EX_01       = NVL(T.EX_01, '') || M.TABLE_INDEX || ',MIG_1811,';           
+*/
+
+/*
+select * from TABLEA t
+*/
