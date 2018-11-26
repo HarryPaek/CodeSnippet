@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace BackToAlgorithms
 {
-    using System;
 
     public class Frog
     {
@@ -31,11 +25,6 @@ namespace BackToAlgorithms
                 return 1;
 
             return num * fac(num - 1);
-        }
-
-        public static void Main(String[] args)
-        {
-            Console.WriteLine(NumberOfWays(3));
         }
     }
 }
