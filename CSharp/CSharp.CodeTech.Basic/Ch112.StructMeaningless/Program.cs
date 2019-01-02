@@ -29,6 +29,12 @@ namespace Ch112.StructMeaningless
             double sumStruct = 0;
             double sumClass = 0;
 
+            string trimmingText = new string(Char(20));
+
+            string textValue = trimmingText ?? string.Empty;
+
+            string trimmedText = textValue.Trim();
+
             var start = DateTime.Now;
 
             for (int index = 0; index < 100000000; index++)
