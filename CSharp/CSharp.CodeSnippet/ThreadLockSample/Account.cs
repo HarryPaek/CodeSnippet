@@ -1,50 +1,57 @@
 ﻿using System;
-using System.Threading.Tasks;
+using ThreadLockSample.Abstracts;
 
 namespace ThreadLockSample
 {
     public class Account
     {
         private readonly object _balanceLock = new object();
-        private decimal _balance;
+        private readonly IRepository _repository;
 
-        public Account(decimal initialBalance)
+        public Account(IRepository repository)
         {
-            this._balance = initialBalance;
+            this._repository = repository;
         }
 
-        public decimal Debit(decimal amount, int index)
+        public decimal Debit(decimal amount, string requester)
         {
             lock (this._balanceLock) {
-                if (this._balance >= amount) {
-                    Console.WriteLine("Task [{0, 10}], Balance before debit: {1, 5}", index, this._balance);
-                    Console.WriteLine("Task [{0, 10}], Amount to remove    : {1, 5}", index, amount);
-                    this._balance = this._balance - amount;
-                    Console.WriteLine("Task [{0, 10}], Balance after debit : {1, 5}", index, this._balance);
+                decimal balance = this._repository.GetBalance(requester);
 
-                    return amount;
-                }
-                else {
-                    return 0;
-                }
+                Console.WriteLine("Task [{0}], Balance before debit: {1, 5}", requester, balance);
+                Console.WriteLine("Task [{0}], Amount to remove    : {1, 5}", requester, amount);
+
+                decimal returnAmount = this._repository.DoWithdraw(amount, requester);
+                balance = this._repository.GetBalance(requester);
+
+                Console.WriteLine("Task [{0}], Balance after debit : {1, 5}", requester, balance);
+
+                return returnAmount;
             }
         }
 
-        public void Credit(decimal amount, int index)
+        public void Credit(decimal amount, string requester)
         {
             lock (this._balanceLock) {
-                Console.WriteLine("Task [{0, 10}], Balance before credit: {1, 5}", index, this._balance);
-                Console.WriteLine("Task [{0, 10}], Amount to add        : {1, 5}", index, amount);
-                this._balance = this._balance + amount;
-                Console.WriteLine("Task [{0, 10}], Balance after credit : {1, 5}", index, this._balance);
+                decimal balance = this._repository.GetBalance(requester);
+
+                Console.WriteLine("Task [{0}], Balance before credit: {1, 5}", requester, balance);
+                Console.WriteLine("Task [{0}], Amount to add        : {1, 5}", requester, amount);
+
+                this._repository.DoDeposit(amount, requester);
+                balance = this._repository.GetBalance(requester);
+
+                Console.WriteLine("Task [{0}], Balance after credit : {1, 5}", requester, balance);
             }
         }
 
-        public decimal Balance(int index)
+        public decimal Balance(string requester)
         {
             lock (this._balanceLock) {
-                Console.WriteLine("Task [{0, 10}], Current Balance      : {1, 5}", index, this._balance);
-                return this._balance;
+                decimal balance = this._repository.GetBalance(requester);
+                Console.WriteLine("Task [{0}], Current Balance      : {1, 5}", requester, balance);
+
+                return balance;
             }
         }
     }

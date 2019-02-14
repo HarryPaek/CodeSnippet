@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThreadLockSample.Abstracts;
+using ThreadLockSample.Persistants;
 
 namespace ThreadLockSample
 {
@@ -10,15 +12,16 @@ namespace ThreadLockSample
     {
         static void Main(string[] args)
         {
-            var account = new Account(1000);
+            IRepository repository = new SimpleValueRepository(1000);
+            var account = new Account(repository);
             var tasks   = new Task[100];
 
             var start = DateTime.Now;
 
             for (int index = 0; index < tasks.Length; index++)
             {
-                int taskIndex = index;
-                tasks[index] = Task.Run(() => RandomUpdate(account, taskIndex));
+                string requester = string.Format("Client-{0:D5}", index);
+                tasks[index] = Task.Run(() => RandomUpdate(account, requester));
             }
 
             Task.WaitAll(tasks);
@@ -27,10 +30,10 @@ namespace ThreadLockSample
             Console.ReadLine();
         }
 
-        private static void RandomUpdate(Account account, int index)
+        private static void RandomUpdate(Account account, string requester)
         {
             var rnd = new Random();
-            for (int i = 0; i < 10; i++)
+            for (int index = 0; index < 10; index++)
             {
                 var amount = rnd.Next(1, 100);
                 double nextDouble = rnd.NextDouble();
@@ -38,11 +41,11 @@ namespace ThreadLockSample
                 bool doBalance = nextDouble < 0.7;
 
                 if (doCredit)
-                    account.Credit(amount, index);
+                    account.Credit(amount, requester);
                 else if (doBalance)
-                    account.Balance(index);
+                    account.Balance(requester);
                 else
-                    account.Debit(amount, index);
+                    account.Debit(amount, requester);
             }
         }
     }

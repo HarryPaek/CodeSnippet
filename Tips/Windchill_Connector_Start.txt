@@ -1,0 +1,7 @@
+1. Windchill Connector VM 시작
+ - Windchill 시작 대기 (~5 Min)
+ - Windcill 시작 확인 ( => 웹브라우저 접속)
+ - C:\EplanServices\SetUp.bat로 서비스 정상 실행 여부 확인
+ - EplanWindchillControllerClient.bat로 클라이언트 서버스 시작
+
+2. Demo 시나리오
