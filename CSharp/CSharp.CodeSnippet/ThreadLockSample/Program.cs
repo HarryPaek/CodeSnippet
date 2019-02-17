@@ -33,7 +33,7 @@ namespace ThreadLockSample
         private static void RandomUpdate(Account account, string requester)
         {
             var rnd = new Random();
-            for (int index = 0; index < 10; index++)
+            for (int index = 0; index < 100; index++)
             {
                 var amount = rnd.Next(1, 100);
                 double nextDouble = rnd.NextDouble();

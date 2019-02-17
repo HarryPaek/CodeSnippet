@@ -1,4 +1,5 @@
-﻿using ThreadLockSample.Abstracts;
+﻿using System;
+using ThreadLockSample.Abstracts;
 
 namespace ThreadLockSample.Persistants
 {
@@ -15,6 +16,8 @@ namespace ThreadLockSample.Persistants
         public decimal GetBalance(string requester)
         {
             lock (this._balanceLock) {
+                Console.WriteLine("Task [{0}], Current Balance        : {1, 5}", requester, this._balance);
+
                 return this._balance;
             }
         }
@@ -22,21 +25,30 @@ namespace ThreadLockSample.Persistants
         public decimal DoWithdraw(decimal amount, string requester)
         {
             lock (this._balanceLock) {
-                if (this._balance >= amount) {
+                Console.WriteLine("Task [{0}], Balance before Withdraw: {1, 5}", requester, this._balance);
+                Console.WriteLine("Task [{0}], Amount to remove       : {1, 5}", requester, amount);
+
+                decimal returnAmount = amount;
+                if (this._balance >= amount)
                     this._balance = this._balance - amount;
-
-                    return amount;
-                }
                 else
-                    return 0;
-            }
+                    returnAmount = 0;
 
+                Console.WriteLine("Task [{0}], Balance after Withdraw : {1, 5}", requester, this._balance);
+
+                return returnAmount;
+            }
         }
 
         public void DoDeposit(decimal amount, string requester)
         {
             lock (this._balanceLock) {
+                Console.WriteLine("Task [{0}], Balance before Deposit : {1, 5}", requester, this._balance);
+                Console.WriteLine("Task [{0}], Amount to Deposit      : {1, 5}", requester, amount);
+
                 this._balance = this._balance + amount;
+
+                Console.WriteLine("Task [{0}], Balance after Deposit  : {1, 5}", requester, this._balance);
             }
         }
     }
