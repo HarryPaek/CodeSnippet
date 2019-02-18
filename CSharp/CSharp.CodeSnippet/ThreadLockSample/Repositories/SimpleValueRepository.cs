@@ -1,7 +1,7 @@
 ﻿using System;
 using ThreadLockSample.Abstracts;
 
-namespace ThreadLockSample.Persistants
+namespace ThreadLockSample.Repositories
 {
     public class SimpleValueRepository : IRepository
     {
@@ -26,7 +26,7 @@ namespace ThreadLockSample.Persistants
         {
             lock (this._balanceLock) {
                 Console.WriteLine("Task [{0}], Balance before Withdraw: {1, 5}", requester, this._balance);
-                Console.WriteLine("Task [{0}], Amount to remove       : {1, 5}", requester, amount);
+                Console.WriteLine("Task [{0}], Amount to withdraw     : {1, 5}", requester, amount);
 
                 decimal returnAmount = amount;
                 if (this._balance >= amount)
@@ -44,7 +44,7 @@ namespace ThreadLockSample.Persistants
         {
             lock (this._balanceLock) {
                 Console.WriteLine("Task [{0}], Balance before Deposit : {1, 5}", requester, this._balance);
-                Console.WriteLine("Task [{0}], Amount to Deposit      : {1, 5}", requester, amount);
+                Console.WriteLine("Task [{0}], Amount to deposit      : {1, 5}", requester, amount);
 
                 this._balance = this._balance + amount;
 
