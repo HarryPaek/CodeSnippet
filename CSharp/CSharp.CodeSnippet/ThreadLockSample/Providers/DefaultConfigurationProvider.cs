@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Specialized;
+using System.Configuration;
 using ThreadLockSample.Abstracts;
 
 namespace ThreadLockSample.Providers
@@ -35,7 +36,7 @@ namespace ThreadLockSample.Providers
 
         public ConnectionStringSettingsCollection ConnectionStrings
         {
-            get { return ConfigurationManager.ConnectionStrings; }
+            get { return this.Configuration.ConnectionStrings.ConnectionStrings; }
         }
 
         public string GetConnectionString(string connectionName)

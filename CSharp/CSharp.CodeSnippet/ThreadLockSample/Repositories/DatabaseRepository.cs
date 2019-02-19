@@ -24,18 +24,29 @@ namespace ThreadLockSample.Repositories
 
         public decimal GetBalance(string requester)
         {
+            AccountDTO dto = null;
+
             lock (this._balanceLock) {
-                AccountDTO dto = GetBalanceInternal(ACCOUNT_ID, requester);
+                try
+                {
+                    dto = GetBalanceInternal(ACCOUNT_ID, requester);
 
-                RecordAccountHistory(new AccountHistoryDTO { Sequence = dto.Sequence, TransactionType = "GetBalance", Amount = 0, Balance = dto.Balance, AccessedBy = requester });
-                Console.WriteLine("Task [{0}], Current Balance        : {1, 5}", requester, dto.Balance);
-
-                return dto.Balance;
+                    RecordAccountHistory(new AccountHistoryDTO { AccountSequence = dto.Sequence, TransactionType = "GetBalance", Amount = 0, Balance = dto.Balance, AccessedBy = requester });
+                    Console.WriteLine("Task [{0}], Current Balance        : {1, 5}", requester, dto.Balance);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
+
+            return dto.Balance;
         }
 
         public decimal DoWithdraw(decimal amount, string requester)
         {
+            decimal returnAmount = amount;
+
             lock (this._balanceLock) {
                 try
                 {
@@ -46,10 +57,8 @@ namespace ThreadLockSample.Repositories
                         Console.WriteLine("Task [{0}], Balance before Withdraw: {1, 5}", requester, dto.Balance);
                         Console.WriteLine("Task [{0}], Amount to withdraw     : {1, 5}", requester, amount);
 
-                        decimal returnAmount = amount;
-                        if (dto.Balance >= amount)
-                        {
-                            RecordAccountHistory(new AccountHistoryDTO { Sequence = dto.Sequence, TransactionType = "DoWithdraw", Amount = amount, Balance = dto.Balance, AccessedBy = requester });
+                        if (dto.Balance >= amount) {
+                            RecordAccountHistory(new AccountHistoryDTO { AccountSequence = dto.Sequence, TransactionType = "DoWithdraw", Amount = amount, Balance = dto.Balance, AccessedBy = requester });
                             DoWithdrawInternal(dto, amount, requester);
                         }
                         else
@@ -59,8 +68,6 @@ namespace ThreadLockSample.Repositories
                         Console.WriteLine("Task [{0}], Balance after Withdraw : {1, 5}", requester, dto.Balance);
 
                         transactionScope.Complete();
-
-                        return returnAmount;
                     }
                 }
                 catch (Exception)
@@ -68,6 +75,8 @@ namespace ThreadLockSample.Repositories
                     throw;
                 }
             }
+
+            return returnAmount;
         }
 
         public void DoDeposit(decimal amount, string requester)
@@ -82,7 +91,7 @@ namespace ThreadLockSample.Repositories
                         Console.WriteLine("Task [{0}], Balance before Deposit : {1, 5}", requester, dto.Balance);
                         Console.WriteLine("Task [{0}], Amount to deposit      : {1, 5}", requester, amount);
 
-                        RecordAccountHistory(new AccountHistoryDTO { Sequence = dto.Sequence, TransactionType = "DoDeposit", Amount = amount, Balance = dto.Balance, AccessedBy = requester });
+                        RecordAccountHistory(new AccountHistoryDTO { AccountSequence = dto.Sequence, TransactionType = "DoDeposit", Amount = amount, Balance = dto.Balance, AccessedBy = requester });
                         DoDepositInternal(dto, amount, requester);
 
                         dto = GetBalanceInternal(dto.Id, requester);
@@ -173,11 +182,11 @@ namespace ThreadLockSample.Repositories
         {
             try
             {
-                string commandText = @"INSERT INTO ACCOUNT_HISTORY(SEQ, TRANSACTION_TYPE, AMOUNT, BALANCE, ACCESSED, ACCESSED_BY)
-                                       VALUES (:Sequence, :TransactionType, :Amount, :Balance, SYSDATE, :AccessedBy)";
+                string commandText = @"INSERT INTO ACCOUNT_HISTORY(SEQ, ACCOUNT_SEQ, TRANSACTION_TYPE, AMOUNT, BALANCE, ACCESSED, ACCESSED_BY)
+                                       VALUES (ACCOUNT_HISTORY_SEQ.NEXTVAL, :Sequence, :TransactionType, :Amount, :Balance, SYSDATE, :AccessedBy)";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-                parameters.Add(":Sequence", history.Sequence);
+                parameters.Add(":Sequence", history.AccountSequence);
                 parameters.Add(":TransactionType", history.TransactionType);
                 parameters.Add(":Amount", history.Amount);
                 parameters.Add(":Balance", history.Balance);

@@ -47,7 +47,7 @@ namespace ThreadLockSample.Models
             {
                 Sequence = accountRow.Field<long>("SEQ"),
                 Id = accountRow.SafeGetString("ACCOUNT_ID"),
-                Balance = SafeParser.Get<decimal>(accountRow.SafeGetString("BALANCE"), 0m),
+                Balance = SafeParser.Get<decimal>(accountRow.SafeGetString<decimal>("BALANCE"), 0m),
                 Created = accountRow.SafeGetValue<DateTime>("CREATED"),
                 CreatedBy = accountRow.SafeGetString("CREATED_BY"),
                 LastUpdated = accountRow.SafeGetValue<DateTime>("LAST_UPDATED"),

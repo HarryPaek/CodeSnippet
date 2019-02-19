@@ -2,7 +2,7 @@ CREATE TABLE ACCOUNT
 (
 	SEQ             NUMBER(10,0) NOT NULL,
 	ACCOUNT_ID      VARCHAR2(64 BYTE) NOT NULL,
-	BALANCE         NUMBER(18,0) DEFAULT 0 NOT NULL,
+	BALANCE         NUMBER DEFAULT 0 NOT NULL,
 	CREATED         DATE DEFAULT SYSDATE,
 	CREATED_BY      VARCHAR2(80 BYTE),
 	LAST_UPDATED    DATE DEFAULT SYSDATE,
@@ -12,3 +12,7 @@ CREATE TABLE ACCOUNT
 
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table ACCOUNT add constraint IDX_ACCOUNT_UK unique (ACCOUNT_ID);
+
+-- Create Sample Data
+INSERT INTO ACCOUNT VALUES(1, 'Harry', 1000, SYSDATE, 'Harry', SYSDATE, 'Harry');
+INSERT INTO ACCOUNT VALUES(2, 'Jason', 2000, SYSDATE, 'Harry', SYSDATE, 'Harry');

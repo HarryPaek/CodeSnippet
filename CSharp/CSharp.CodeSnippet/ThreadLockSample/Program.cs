@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using ThreadLockSample.Abstracts;
 using ThreadLockSample.DataAccess;
@@ -23,6 +24,7 @@ namespace ThreadLockSample
             {
                 string requester = string.Format("Client-{0:D5}", index);
                 tasks[index] = Task.Run(() => RandomUpdate(account, requester));
+                Thread.Sleep(100);
             }
 
             Task.WaitAll(tasks);
