@@ -15,6 +15,26 @@ Docker 시작 시 아래와 같은 오류가 발생하면,
  - Hardware assisted virtualization and data execution protection must be enabled in the BIOS. See https://docs.docker.com/docker-for-windows/troubleshoot/#virtualization-must-be-enabled
  
  1. bcdedit /deletevalue hypervisorlaunchtype <= 확인 필요
- 2. 제어판 > 프로그램 > Windows 기능 켜기/끄기
+ 
+ 2. Hiper-V 기능 켜기/끄기
+  2-1. Command Line (관리자 모드)
+    - dism /online /Disable-Feature /FeatureName:Microsoft-Hyper-V-All > 리부팅
+	- dism /online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All > 리부팅
+	
+  2-2. 제어판 > 프로그램 > Windows 기능 켜기/끄기
     - Hiper-V를 선택해제 > 리부팅
 	- Hiper-V를 선택     > 리부팅
+
+참고 사항
+ dism /online /Get-Features
+ 
+ dism /online /Enable-Feature /FeatureName:NetFx3
+ dism /online /Disable-Feature /FeatureName:NetFx3
+ 
+ 기능 이름 : Microsoft-Hyper-V-All
+ 기능 이름 : Microsoft-Hyper-V
+ 기능 이름 : Microsoft-Hyper-V-Tools-All
+ 기능 이름 : Microsoft-Hyper-V-Management-PowerShell
+ 기능 이름 : Microsoft-Hyper-V-Hypervisor
+ 기능 이름 : Microsoft-Hyper-V-Services
+ 기능 이름 : Microsoft-Hyper-V-Management-Clients

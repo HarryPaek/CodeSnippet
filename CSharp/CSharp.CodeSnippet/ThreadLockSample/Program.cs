@@ -10,21 +10,21 @@ namespace ThreadLockSample
 {
     class Program
     {
+        static IConfigurationProvider _configuration = null;
+
         static void Main(string[] args)
         {
-            // var repository = GetSimpleValueRepository();
-            var repository = GetDatabaseRepository();
-
-            Account account = new Account(repository);
-            var tasks   = new Task[100];
+            ThreadLockConfigurationProvider customConfiguration = GetCustomConfiguration();
+            Account account = new Account(GetRepository());
+            var tasks = new Task[customConfiguration.NumberOfTasks];
 
             var start = DateTime.Now;
 
             for (int index = 0; index < tasks.Length; index++)
             {
                 string requester = string.Format("Client-{0:D5}", index);
-                tasks[index] = Task.Run(() => RandomUpdate(account, requester));
-                Thread.Sleep(100);
+                tasks[index] = Task.Run(() => RandomUpdate(account, requester, customConfiguration.NumberOfRequestsPerTask));
+                Thread.Sleep(customConfiguration.ThreadSpeepBetweenTasks);
             }
 
             Task.WaitAll(tasks);
@@ -33,23 +33,18 @@ namespace ThreadLockSample
             Console.ReadLine();
         }
 
-        private static IRepository GetSimpleValueRepository()
+        private static IRepository GetRepository()
         {
-            return new SimpleValueRepository(1000);
+            // return GetSimpleValueRepository();
+            return GetDatabaseRepository();
         }
 
-        private static IRepository GetDatabaseRepository()
-        {
-            IConfigurationProvider configuration = new DefaultConfigurationProvider();
-            IDBAccessor oracleDb = new OracleDBAccessor(configuration);
+        #region Support Methods
 
-            return new DatabaseRepository(oracleDb);
-        }
-
-        private static void RandomUpdate(Account account, string requester)
+        private static void RandomUpdate(Account account, string requester, int numberOfRequests = 10)
         {
             var rnd = new Random();
-            for (int index = 0; index < 10; index++)
+            for (int index = 0; index < numberOfRequests; index++)
             {
                 var amount = rnd.Next(1, 100);
                 double nextDouble = rnd.NextDouble();
@@ -64,5 +59,32 @@ namespace ThreadLockSample
                     account.Debit(amount, requester);
             }
         }
+
+        private static IRepository GetSimpleValueRepository()
+        {
+            return new SimpleValueRepository(1000);
+        }
+
+        private static IRepository GetDatabaseRepository()
+        {
+            IDBAccessor oracleDb = new OracleDBAccessor(GetConfiguration());
+
+            return new DatabaseRepository(oracleDb);
+        }
+
+        private static IConfigurationProvider GetConfiguration()
+        {
+            if (_configuration == null)
+                _configuration = new DefaultConfigurationProvider();
+
+            return _configuration;
+        }
+
+        private static ThreadLockConfigurationProvider GetCustomConfiguration()
+        {
+            return new ThreadLockConfigurationProvider(GetConfiguration());
+        }
+
+        #endregion
     }
 }

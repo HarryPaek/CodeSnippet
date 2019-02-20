@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\IConfigurationProvider.cs" />
+    <Compile Include="Abstracts\ICustomConfigurationProvider.cs" />
     <Compile Include="Abstracts\IDBAccessor.cs" />
     <Compile Include="Abstracts\IRepository.cs" />
     <Compile Include="Account.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Models\AccountDTO.cs" />
     <Compile Include="Models\AccountHistoryDTO.cs" />
     <Compile Include="Providers\DefaultConfigurationProvider.cs" />
+    <Compile Include="Providers\ThreadLockConfigurationProvider.cs" />
     <Compile Include="Repositories\DatabaseRepository.cs" />
     <Compile Include="Repositories\SimpleValueRepository.cs" />
     <Compile Include="Program.cs" />
