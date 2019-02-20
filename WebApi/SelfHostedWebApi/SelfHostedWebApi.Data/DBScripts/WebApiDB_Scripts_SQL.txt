@@ -1,0 +1,19 @@
+CREATE TABLE [Products](
+	[ProductId] [int] IDENTITY(1,1) NOT NULL,
+	[ProductName] [varchar](50) NOT NULL,
+	[ProductDescription] [varchar](250),
+ CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
+(
+	[ProductId] ASC
+));
+
+SET IDENTITY_INSERT [dbo].[Products] ON
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (1, N'laptop',  N'Notebook Computer')
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (2, N'Desktop',  N'Desktop Computer')
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (3, N'Mobile',  N'Mobile Phone')
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (4, N'Xamarin', N'Xamarin')
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (5, N'IPhone',  N'IPhone')
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (6, N'Visual Studio', N'Visual Studio')
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (7, N'Galaxy Note', N'Samsung Phone Note')
+INSERT [Products] ([ProductId], [ProductName], [ProductDescription]) VALUES (8, N'Galaxy S9', N'Samsung Phone S9')
+SET IDENTITY_INSERT [dbo].[Products] OFF

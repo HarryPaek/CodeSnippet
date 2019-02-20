@@ -1,3 +1,24 @@
+1. Branching
+  Deleting a local branch												git branch -d {branch}
+  Deleting a remote branch												git push origin --delete {branch}
+
+2. Logs
+  List commit count by user												git shortlog -s -n
+
+3. Reverting Files
+  Revert changes to modified files										git reset --hard
+  Revert to tag, branch, or previous version (rollback)					git reset --hard {tag/branch/commit id}
+  Remove all untracked files and directories							git clean -fd
+
+4. Stashing
+  Stash current changes													git stash
+  Stash current changes with name										git stash save "{Name}"
+  Stash current changes with untracked/unstaged files					git stash -u
+  Stash current changes with untracked/unstaged files and a name		git stash save -u "{Name}"
+  Listing stashes (Note: type ":q" to exit)								git stash list
+  Applying the last set of stashed changes								git stash apply
+
+
 # Git Hub Config
 
 git config --local user.email "paek.harry@gmail.com"
