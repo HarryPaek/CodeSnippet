@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostedWebApi.Server", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostedWebApi.Data", "SelfHostedWebApi.Data\SelfHostedWebApi.Data.csproj", "{6E471F74-965F-48F3-8201-38DDDE53F7E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostedWebApi.Common", "SelfHostedWebApi.Common\SelfHostedWebApi.Common.csproj", "{5118F562-EAD8-4BBC-84A9-6DAE08C20440}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6E471F74-965F-48F3-8201-38DDDE53F7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E471F74-965F-48F3-8201-38DDDE53F7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E471F74-965F-48F3-8201-38DDDE53F7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5118F562-EAD8-4BBC-84A9-6DAE08C20440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5118F562-EAD8-4BBC-84A9-6DAE08C20440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5118F562-EAD8-4BBC-84A9-6DAE08C20440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5118F562-EAD8-4BBC-84A9-6DAE08C20440}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

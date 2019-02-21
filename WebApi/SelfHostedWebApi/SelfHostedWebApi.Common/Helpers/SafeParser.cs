@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Configuration;
 
-namespace ThreadLockSample.Helpers
+namespace SelfHostedWebApi.Common.Helpers
 {
     public static class SafeParser
     {
@@ -18,10 +18,12 @@ namespace ThreadLockSample.Helpers
 
             var converter = TypeDescriptor.GetConverter(typeof(T));
 
-            try {
+            try
+            {
                 return (T)(converter.ConvertFromInvariantString(txtValue));
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return defaultValue;
             }
         }
@@ -32,6 +34,14 @@ namespace ThreadLockSample.Helpers
                 return defaultValue;
 
             return Get(configurationElement.Value, defaultValue);
+        }
+
+        public static string Get(KeyValueConfigurationElement configurationElement, string defaultValue)
+        {
+            if (configurationElement == null || string.IsNullOrWhiteSpace(configurationElement.Value))
+                return defaultValue;
+
+            return configurationElement.Value;
         }
 
         public static bool GetFromYN(string txtValue)
