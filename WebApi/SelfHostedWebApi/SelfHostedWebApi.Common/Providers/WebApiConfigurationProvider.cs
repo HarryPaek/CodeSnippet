@@ -37,7 +37,16 @@ namespace SelfHostedWebApi.Common.Providers
 
         public string BaseServiceAddress
         {
-            get { return SafeParser.Get(_configurationProvider.Appsettings["BaseServiceAddress"], _defaultServiceAddress); }
+            get { return SafeParser.Get(this.ConfigurationProvider.Appsettings["BaseServiceAddress"], _defaultServiceAddress); }
+        }
+
+        #endregion
+
+        #region Protected Properties
+
+        protected IConfigurationProvider ConfigurationProvider
+        {
+            get { return this._configurationProvider; }
         }
 
         #endregion

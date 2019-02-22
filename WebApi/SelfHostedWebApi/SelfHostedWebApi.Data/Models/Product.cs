@@ -1,4 +1,5 @@
-﻿using SelfHostedWebApi.Common.Extensions;
+﻿using SelfHostedWebApi.Common.Abstracts;
+using SelfHostedWebApi.Common.Extensions;
 using System;
 using System.Data;
 
@@ -6,11 +7,20 @@ namespace SelfHostedWebApi.Data.Models
 {
     public class Product
     {
-        #region Public Properties
+        #region Static Mathods
 
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        #endregion
+
+        #region Public Mathods
+
+        public override string ToString()
+        {
+            return string.Format("{0,7}, {1}, {2}", this.Id, this.Name, this.Description);
+        }
 
         #endregion
 
