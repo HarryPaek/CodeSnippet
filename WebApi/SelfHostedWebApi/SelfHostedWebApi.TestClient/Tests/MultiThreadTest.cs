@@ -38,7 +38,6 @@ namespace SelfHostedWebApi.TestClient.Tests
             Task.WaitAll(tasks);
 			
 			Console.WriteLine("Tasks were done!!!, Total Time: [{0}]", DateTime.Now - start);
-            Console.ReadLine();
         }
 
         #endregion
@@ -77,7 +76,7 @@ namespace SelfHostedWebApi.TestClient.Tests
                 {
                     test.Run();
                 }
-                Console.Out.WriteLine("***** ***** ***** ***** ***** ***** ***** End Test ***** ***** ***** ***** ***** ***** *****");
+                Console.Out.WriteLine("***** ***** ***** ***** ***** End Test For [{0}/{1:D5}] ***** ***** ***** ***** *****", requester, index);
                 Thread.Sleep(speepBetweenWebRequests);
             }
         }
