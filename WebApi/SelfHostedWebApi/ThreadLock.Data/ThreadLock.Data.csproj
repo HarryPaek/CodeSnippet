@@ -85,7 +85,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,8 +97,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\IAccountRepository.cs" />
-    <Compile Include="Models\AccountDTO.cs" />
+    <Compile Include="Exceptions\RepositoryDataException.cs" />
+    <Compile Include="Exceptions\RepositoryDataNotFoundException.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountHistory.cs" />
+    <Compile Include="Models\AccountList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ePlatform.Common\ePlatform.Common.csproj">
@@ -108,9 +115,7 @@
       <Name>ePlatform.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DBScripts\AccountHistory_Table_SQL.txt" />
     <Content Include="DBScripts\Account_Table_SQL.txt" />

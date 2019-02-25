@@ -6,15 +6,13 @@ namespace ePlatform.Data.Repositories
 {
     public abstract class AbstractRepositoryBase<TId, TItem> : IRepository<TId, TItem> where TItem : IBaseEntity<TId>
     {
-        private readonly object _lockObject = new object();
-
         #region IRepository
 
         public virtual TId Add(TItem item)
         {
             TId productId;
 
-            lock (this._lockObject)
+            lock (this.LockObject)
             {
                 try
                 {
@@ -33,7 +31,7 @@ namespace ePlatform.Data.Repositories
         {
             bool deleted = false;
 
-            lock (this._lockObject)
+            lock (this.LockObject)
             {
                 try
                 {
@@ -52,7 +50,7 @@ namespace ePlatform.Data.Repositories
         {
             TItem item = default(TItem);
 
-            lock (this._lockObject)
+            lock (this.LockObject)
             {
                 try
                 {
@@ -71,7 +69,7 @@ namespace ePlatform.Data.Repositories
         {
             IEnumerable<TItem> list = null;
 
-            lock (this._lockObject)
+            lock (this.LockObject)
             {
                 try
                 {
@@ -90,7 +88,7 @@ namespace ePlatform.Data.Repositories
         {
             bool updated = false;
 
-            lock (this._lockObject)
+            lock (this.LockObject)
             {
                 try
                 {
@@ -104,6 +102,12 @@ namespace ePlatform.Data.Repositories
 
             return updated;
         }
+
+        #endregion
+
+        #region Abstracted Abstract Properties
+
+        protected abstract object LockObject  { get; }
 
         #endregion
 

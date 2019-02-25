@@ -3,12 +3,12 @@ using ThreadLock.Data.Models;
 
 namespace ThreadLock.Data.Abstracts
 {
-    public interface IAccountRepository: IRepository<string, AccountDTO>
+    public interface IAccountRepository: IRepository<string, Account>
     {
-        decimal GetBalance(string id, AccountDTO dto);
+        decimal GetBalance(string id, string requester);
 
-        bool DoWithdraw(string id, AccountDTO dto);
+        bool DoDeposit(string id, decimal amount, string requester);
 
-        bool DoDeposit(string id, AccountDTO dto);
+        decimal DoWithdraw(string id, decimal amount, string requester);
     }
 }

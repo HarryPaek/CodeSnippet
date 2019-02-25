@@ -123,6 +123,7 @@
     <Compile Include="Abstracts\ICustomConfigurationProvider.cs" />
     <Compile Include="DI\IoC.cs" />
     <Compile Include="DI\Log4NetExtension.cs" />
+    <Compile Include="Exceptions\ePlatformException.cs" />
     <Compile Include="Extensions\DataRowExtensions.cs" />
     <Compile Include="Helpers\SafeParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
