@@ -1,6 +1,6 @@
 ﻿using ePlatform.Common.DI;
+using ePlatform.WebApi.Abstracts;
 using System;
-using ThreadLock.OwinServer.Abstracts;
 
 namespace ThreadLock.TestServer
 {
@@ -12,7 +12,9 @@ namespace ThreadLock.TestServer
             {
                 server.Start();
 
+                Console.WriteLine("");
                 Console.WriteLine(" Please press <ENTER> to QUIT the Service...");
+
                 Console.ReadLine();
             }
         }

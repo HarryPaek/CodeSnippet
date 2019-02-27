@@ -28,7 +28,6 @@ namespace ThreadLock.OwinServer
             _serverInstance = WebApp.Start<StartUp>(this._webApiConfiguration.BaseServiceAddress);
 
             Console.WriteLine("");
-            Console.WriteLine("");
             Console.WriteLine(" Service was  started at {0}", this._webApiConfiguration.BaseServiceAddress);
         }
 
