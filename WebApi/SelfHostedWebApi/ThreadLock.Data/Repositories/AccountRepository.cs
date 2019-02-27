@@ -228,10 +228,9 @@ namespace ThreadLock.Data.Repositories
                                         WHERE ACCOUNT_ID         = :AccountId";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-                parameters.Add(":AccountId", item.Id);
+                parameters.Add(":AccountId", id);
                 parameters.Add(":Balance", item.Balance);
                 parameters.Add(":LastUpdatedBy", item.LastUpdatedBy);
-                parameters.Add(":AccountId", id);
 
                 return this._db.ExecuteNonQuery(commandText, parameters) > 0;
             }

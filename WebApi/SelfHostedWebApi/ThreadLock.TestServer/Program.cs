@@ -12,6 +12,7 @@ namespace ThreadLock.TestServer
             {
                 server.Start();
 
+                Console.WriteLine(" Please press <ENTER> to QUIT the Service...");
                 Console.ReadLine();
             }
         }

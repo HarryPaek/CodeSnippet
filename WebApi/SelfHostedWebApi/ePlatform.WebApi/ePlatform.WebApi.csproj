@@ -127,7 +127,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\AbstractControllerBase.cs" />
+    <Compile Include="Abstracts\IWebApiClient.cs" />
     <Compile Include="Abstracts\IWebApiConfigurationProvider.cs" />
+    <Compile Include="Abstracts\IWebApiServer.cs" />
+    <Compile Include="Clients\DefaultWebApiClient.cs" />
     <Compile Include="DI\UnityDependencyResolver.cs" />
     <Compile Include="DI\UnityHierarchicalDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +141,10 @@
     <ProjectReference Include="..\ePlatform.Common\ePlatform.Common.csproj">
       <Project>{ac1aa828-e2ed-482e-a786-7ba4f8d46475}</Project>
       <Name>ePlatform.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ePlatform.Data\ePlatform.Data.csproj">
+      <Project>{631ecc00-f28d-440c-8e75-b09725cac18d}</Project>
+      <Name>ePlatform.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

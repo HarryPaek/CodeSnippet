@@ -15,6 +15,7 @@ namespace ThreadLock.OwinServer
             HttpConfiguration config = new HttpConfiguration();
             config.DependencyResolver = new UnityDependencyResolver(IoC.DependencyResolver);
 
+            config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

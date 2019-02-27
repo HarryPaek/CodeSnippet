@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ThreadLock.OwinServer.Abstracts
+namespace ePlatform.WebApi.Abstracts
 {
     public interface IWebApiServer : IDisposable
     {
