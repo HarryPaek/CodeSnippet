@@ -51,12 +51,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\AbstractTest.cs" />
+    <Compile Include="Abstracts\ITest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\SingleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Providers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ePlatform.Common\ePlatform.Common.csproj">
+      <Project>{ac1aa828-e2ed-482e-a786-7ba4f8d46475}</Project>
+      <Name>ePlatform.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ePlatform.WebApi\ePlatform.WebApi.csproj">
+      <Project>{ed989249-cfa8-44a5-8efe-b57341c4e36c}</Project>
+      <Name>ePlatform.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThreadLock.Data\ThreadLock.Data.csproj">
+      <Project>{f3cfb10e-378a-46b3-89ee-acf7e4b3bc27}</Project>
+      <Name>ThreadLock.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
