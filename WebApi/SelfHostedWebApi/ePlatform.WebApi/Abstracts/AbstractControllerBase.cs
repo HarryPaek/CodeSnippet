@@ -73,8 +73,7 @@ namespace ePlatform.WebApi.Abstracts
                 var request = Request;
                 var headers = request.Headers;
 
-                if (headers.Contains("Requester"))
-                {
+                if (headers.Contains("Requester")) {
                     requester = headers.GetValues("Requester").FirstOrDefault();
                 }
 

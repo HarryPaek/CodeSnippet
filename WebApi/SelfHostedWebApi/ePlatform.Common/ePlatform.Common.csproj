@@ -121,14 +121,20 @@
   <ItemGroup>
     <Compile Include="Abstracts\IConfigurationProvider.cs" />
     <Compile Include="Abstracts\ICustomConfigurationProvider.cs" />
+    <Compile Include="Abstracts\ISequenceGenerator.cs" />
     <Compile Include="DI\IoC.cs" />
     <Compile Include="DI\Log4NetExtension.cs" />
     <Compile Include="Exceptions\ePlatformException.cs" />
     <Compile Include="Extensions\DataRowExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\IntegerExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\SafeParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\DefaultConfigurationProvider.cs" />
     <Compile Include="Providers\DefaultCustomConfigurationProvider.cs" />
+    <Compile Include="Providers\DefaultSequenceProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

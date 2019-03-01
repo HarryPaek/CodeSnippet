@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ePlatform.Common.DI;
+using System;
+using ThreadLock.TestClient.Abstracts;
 
 namespace ThreadLock.TestClient
 {
@@ -10,6 +8,13 @@ namespace ThreadLock.TestClient
     {
         static void Main(string[] args)
         {
+            using (ITest testFactory = IoC.Resolve<ITest>("factory"))
+            {
+                testFactory.Run();
+            }
+
+            Console.WriteLine("Press <Enter> to quit.");
+            Console.ReadLine();
         }
     }
 }

@@ -8,6 +8,18 @@ namespace ThreadLock.Data.Models
 {
     public class Account : IBaseEntity<string>
     {
+        private Account()
+        {
+        }
+
+        public Account(string id, decimal balance, string accessedBy)
+        {
+            this.Id = id;
+            this.Balance = balance;
+            this.CreatedBy = accessedBy;
+            this.LastUpdatedBy = accessedBy;
+        }
+
         #region IBaseEntity Implementations
 
         public string Id { get; private set; }
@@ -38,6 +50,11 @@ namespace ThreadLock.Data.Models
                 Balance = this.Balance + amount,
                 LastUpdatedBy = requester
             };
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Id=[{0}], Balance=[{1}], Updated=[{2}/{3}]", this.Id, this.Balance, this.LastUpdated, this.LastUpdatedBy);
         }
 
         #endregion

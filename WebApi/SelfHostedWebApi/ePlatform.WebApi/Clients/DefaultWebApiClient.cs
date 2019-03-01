@@ -28,7 +28,14 @@ namespace ePlatform.WebApi.Clients
             this._client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public HttpResponseMessage Delete(string serviceRoute)
+        #region IWebApiClient implementation
+
+        public virtual HttpRequestHeaders DefaultRequestHeaders
+        {
+            get { return this._client == null ? null : this._client.DefaultRequestHeaders; }
+        }
+
+        public virtual HttpResponseMessage Delete(string serviceRoute)
         {
             var response = this._client.DeleteAsync(serviceRoute);
             response.Wait();
@@ -36,7 +43,7 @@ namespace ePlatform.WebApi.Clients
             return response.Result;
         }
 
-        public HttpResponseMessage Get(string serviceRoute)
+        public virtual HttpResponseMessage Get(string serviceRoute)
         {
             var response = this._client.GetAsync(serviceRoute);
             response.Wait();
@@ -44,7 +51,7 @@ namespace ePlatform.WebApi.Clients
             return response.Result;
         }
 
-        public HttpResponseMessage Post(string serviceRoute, T newItem)
+        public virtual HttpResponseMessage Post(string serviceRoute, T newItem)
         {
             var response = this._client.PostAsJsonAsync(serviceRoute, newItem);
             response.Wait();
@@ -52,13 +59,15 @@ namespace ePlatform.WebApi.Clients
             return response.Result;
         }
 
-        public HttpResponseMessage Put(string serviceRoute, T updateInfo)
+        public virtual HttpResponseMessage Put(string serviceRoute, T updateInfo)
         {
             var response = this._client.PutAsJsonAsync(serviceRoute, updateInfo);
             response.Wait();
 
             return response.Result;
         }
+
+        #endregion
 
         #region IDisposable Support
 

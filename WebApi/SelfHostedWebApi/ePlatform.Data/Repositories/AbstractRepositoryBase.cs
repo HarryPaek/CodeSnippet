@@ -10,13 +10,13 @@ namespace ePlatform.Data.Repositories
 
         public virtual TId Add(TItem item)
         {
-            TId productId;
+            TId itemId;
 
             lock (this.LockObject)
             {
                 try
                 {
-                    productId = AddInternal(item);
+                    itemId = AddInternal(item);
                 }
                 catch (Exception)
                 {
@@ -24,7 +24,7 @@ namespace ePlatform.Data.Repositories
                 }
             }
 
-            return productId;
+            return itemId;
         }
 
         public virtual bool Delete(TId id)
