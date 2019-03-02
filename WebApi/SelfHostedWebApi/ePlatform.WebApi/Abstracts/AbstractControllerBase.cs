@@ -77,10 +77,7 @@ namespace ePlatform.WebApi.Abstracts
                     requester = headers.GetValues("Requester").FirstOrDefault();
                 }
 
-                if (string.IsNullOrWhiteSpace(requester))
-                    requester = ClientIpAddress;
-
-                return requester;
+                return string.Format("{0}@{1}", requester, ClientIpAddress);
             }
         }
 
