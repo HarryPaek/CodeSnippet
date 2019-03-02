@@ -270,15 +270,28 @@ namespace ThreadLock.TestClient.Tests
 
         private Account GetNewAccountItem()
         {
-            string id = string.Format("{0}-{1}", this._accountIdPrefix, this._sequencerGenerator.GetNext(this.Requester));
-            decimal balance = new Random().Next(1, 10) * 250m;
-
-            return new Account(id, balance, this.Requester);
+            return new Account
+            {
+                Id = GetNewAccountId(),
+                Balance = GetRandomBalance(),
+                CreatedBy = this.Requester,
+                LastUpdatedBy = this.Requester
+            };
         }
 
         private Account GetEditAccountItem(Account account)
         {
             return account.UpdateBalance(GetRandomAmount(), this.Requester);
+        }
+
+        private string GetNewAccountId()
+        {
+            return string.Format("{0}-{1}", this._accountIdPrefix, this._sequencerGenerator.GetNext(this.Requester));
+        }
+
+        private decimal GetRandomBalance()
+        {
+            return new Random().Next(1, 10) * 250m;
         }
 
         private decimal GetRandomAmount()

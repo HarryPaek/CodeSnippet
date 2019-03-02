@@ -8,34 +8,22 @@ namespace ThreadLock.Data.Models
 {
     public class Account : IBaseEntity<string>
     {
-        private Account()
-        {
-        }
-
-        public Account(string id, decimal balance, string accessedBy)
-        {
-            this.Id = id;
-            this.Balance = balance;
-            this.CreatedBy = accessedBy;
-            this.LastUpdatedBy = accessedBy;
-        }
-
         #region IBaseEntity Implementations
 
-        public string Id { get; private set; }
+        public string Id { get; set; }
 
         #endregion
 
         #region Public Properties
 
-        public long Sequence { get; private set; }
-        public decimal Balance { get; private set; }
+        public long Sequence { get; set; }
+        public decimal Balance { get; set; }
 
-        public DateTime? Created { get; private set; }
-        public string CreatedBy { get; private set; }
+        public DateTime? Created { get; set; }
+        public string CreatedBy { get; set; }
 
-        public DateTime? LastUpdated { get; private set; }
-        public string LastUpdatedBy { get; private set; }
+        public DateTime? LastUpdated { get; set; }
+        public string LastUpdatedBy { get; set; }
 
         #endregion
 

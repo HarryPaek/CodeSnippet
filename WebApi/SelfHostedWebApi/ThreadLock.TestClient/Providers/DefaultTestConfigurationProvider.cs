@@ -20,7 +20,7 @@ namespace ThreadLock.TestClient.Providers
 
         public int ThreadSpeepBetweenTasks
         {
-            get { return SafeParser.Get<int>(this.ConfigurationProvider.Appsettings["ThreadSpeepBetweenTasks"], 1000); }
+            get { return SafeParser.Get<int>(this.ConfigurationProvider.Appsettings["ThreadSpeepBetweenTasks"], 100); }
         }
 
         public int NumberOfRequestsPerTask
