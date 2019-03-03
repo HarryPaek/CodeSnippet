@@ -112,13 +112,6 @@ namespace ePlatform.Common.Extensions
             return removedText;
         }
 
-        /*
-        /// <summary>
-        /// Get substring of specified number of characters on the right.
-        /// </summary>
-        */
-        
-
         /// <summary>
         /// 주어진 문자열의 오른쪽에서 지정된 길이 만큼의 문자열을 구한다.
         /// </summary>

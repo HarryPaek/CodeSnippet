@@ -8,10 +8,10 @@ namespace ePlatform.Common.Extensions
         /// Converts the given decimal number to the numeral system with the
         /// specified radix (in the range [2, 36]).
         /// </summary>
-        /// <param name="longNumber">The number to convert.</param>
+        /// <param name="intNumber">The number to convert.</param>
         /// <param name="radix">The radix of the destination numeral system (in the range [2, 36]).</param>
         /// <returns></returns>
-        public static string ToRadixString(this int longNumber, int radix = 36)
+        public static string ToRadixString(this int intNumber, int radix = 36)
         {
             const int BitsInLong = 64;
             const string Digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -19,11 +19,11 @@ namespace ePlatform.Common.Extensions
             if (radix < 2 || radix > Digits.Length)
                 throw new ArgumentException("The radix must be >= 2 and <= " + Digits.Length.ToString());
 
-            if (longNumber == 0)
+            if (intNumber == 0)
                 return "0";
 
             int index = BitsInLong - 1;
-            long currentNumber = Math.Abs(longNumber);
+            long currentNumber = Math.Abs(intNumber);
             char[] charArray = new char[BitsInLong];
 
             while (currentNumber != 0)
@@ -35,7 +35,7 @@ namespace ePlatform.Common.Extensions
 
             string result = new String(charArray, index + 1, BitsInLong - index - 1);
 
-            if (longNumber < 0)
+            if (intNumber < 0)
                 result = "-" + result;
 
             return result;

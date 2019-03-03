@@ -31,12 +31,8 @@ namespace ePlatform.Common.Extensions
         {
             StringBuilder toReturn = new StringBuilder();
 
-            toReturn.Append(dateTime.Year.ToRadixString().FixedLengthRight(2));
-            toReturn.Append(dateTime.Month.ToRadixString().Right(1));
-            toReturn.Append(dateTime.Day.ToRadixString().Right(1));
-            toReturn.Append(dateTime.Hour.ToRadixString().FixedLengthRight(1));
-            toReturn.Append(dateTime.Minute.ToRadixString().FixedLengthRight(2));
-            toReturn.Append(dateTime.Second.ToRadixString().FixedLengthRight(2));
+            toReturn.Append(ToLongDataRadixString(dateTime));
+            toReturn.Append(ToLongTimeRadixString(dateTime));
 
             return toReturn.ToString();
         }
@@ -45,16 +41,43 @@ namespace ePlatform.Common.Extensions
         {
             StringBuilder toReturn = new StringBuilder();
 
-            toReturn.Append(dateTime.Year.ToRadixString().FixedLengthRight(2));
-            toReturn.Append(dateTime.Month.ToRadixString().Right(1));
-            toReturn.Append(dateTime.Day.ToRadixString().Right(1));
-            toReturn.Append(dateTime.Hour.ToRadixString().FixedLengthRight(1));
-            toReturn.Append(dateTime.Minute.ToRadixString().FixedLengthRight(2));
-            toReturn.Append(dateTime.Second.ToRadixString().FixedLengthRight(2));
-            toReturn.Append(dateTime.Millisecond.ToRadixString().FixedLengthRight(2));
+            toReturn.Append(ToLongDataRadixString(dateTime));
+            toReturn.Append(ToLongTimeRadixString(dateTime));
+            toReturn.Append(ToMillSecondRadixString(dateTime));
 
             return toReturn.ToString();
         }
+
+        #region Private Methods
+
+        private static string ToLongDataRadixString(this DateTime dateTime)
+        {
+            StringBuilder toReturn = new StringBuilder();
+
+            toReturn.Append(dateTime.Year.ToRadixString().FixedLengthRight(2));
+            toReturn.Append(dateTime.Month.ToRadixString().Right(1));
+            toReturn.Append(dateTime.Day.ToRadixString().Right(1));
+
+            return toReturn.ToString();
+        }
+
+        private static string ToLongTimeRadixString(this DateTime dateTime)
+        {
+            StringBuilder toReturn = new StringBuilder();
+
+            toReturn.Append(dateTime.Hour.ToRadixString().FixedLengthRight(1));
+            toReturn.Append(dateTime.Minute.ToRadixString().FixedLengthRight(2));
+            toReturn.Append(dateTime.Second.ToRadixString().FixedLengthRight(2));
+
+            return toReturn.ToString();
+        }
+
+        private static string ToMillSecondRadixString(this DateTime dateTime)
+        {
+            return dateTime.Millisecond.ToRadixString().FixedLengthRight(2);
+        }
+
+        #endregion
     }
 }
 
