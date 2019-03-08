@@ -1,6 +1,7 @@
 ﻿using ePlatform.Common.Abstracts;
 using ePlatform.Common.Extensions;
 using ePlatform.WebApi.Abstracts;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +14,27 @@ namespace ThreadLock.TestClient.Tests
     public class SingleTest : ITest
     {
         private readonly string        _accountIdPrefix = string.Empty;
+
+        private ILog                   _logger = null;
         private IWebApiClient<Account> _client = null;
         private ISequenceGenerator     _sequencerGenerator = null;
 
-        public SingleTest(IWebApiClient<Account> client, ISequenceGenerator sequencerGenerator)
+        public SingleTest(IWebApiClient<Account> client, ISequenceGenerator sequencerGenerator, ILog logger)
         {
+            if (logger == null)
+                throw new ArgumentNullException("logger");
+
             if (client == null)
                 throw new ArgumentNullException("client");
 
             if (sequencerGenerator == null)
                 throw new ArgumentNullException("sequencerGenerator");
 
-            this._accountIdPrefix    = DateTime.Now.ToLongDataTimeMillSecondRadixString();
+            this._logger             = logger;
             this._client             = client;
             this._sequencerGenerator = sequencerGenerator;
+
+            this._accountIdPrefix    = DateTime.Now.ToLongDataTimeMillSecondRadixString();
         }
 
         #region ITest Implementations
@@ -67,6 +75,7 @@ namespace ThreadLock.TestClient.Tests
                     }
 
                     this._sequencerGenerator = null;
+                    this._logger = null;
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
@@ -119,6 +128,9 @@ namespace ThreadLock.TestClient.Tests
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("GetAllAccounts(), Error with [{0}]", response.ReasonPhrase));
 
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
+
                 return;
             }
 
@@ -141,6 +153,9 @@ namespace ThreadLock.TestClient.Tests
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("GetAccount({0}), Error with [{1}]", accountId, response.ReasonPhrase));
 
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
+
                 return;
             }
 
@@ -154,6 +169,9 @@ namespace ThreadLock.TestClient.Tests
 
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("AddAccount(), Error with [{0}]", response.ReasonPhrase));
+
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
 
                 return;
             }
@@ -170,14 +188,24 @@ namespace ThreadLock.TestClient.Tests
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("EditAccount(), QueryAccount({0}) error with [{1}]", accountId, response.ReasonPhrase));
 
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
+
                 return;
             }
 
             var account = response.Content.ReadAsAsync<Account>().Result;
-            response = this._client.Put(string.Format("api/product/{0}", account.Id), GetEditAccountItem(account));
+
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("EditAccount(), queryed account = [{0}]", account);
+
+            response = this._client.Put(string.Format("api/account/{0}", account.Id), GetAccountItemForEdit(account));
 
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("EditAccount({0}), Error with [{1}]", account.Id, response.ReasonPhrase));
+
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
 
                 return;
             }
@@ -190,10 +218,13 @@ namespace ThreadLock.TestClient.Tests
             string deleteAccountId = GetRandomAccountId();
 
             Console.WriteLine("DeleteAccount(), deleteAccountId=[{0}], this._sequencerGenerator.GetCurrent()=[{1}]", deleteAccountId, this._sequencerGenerator.GetCurrent(this.Requester));
-            HttpResponseMessage response = this._client.Delete(string.Format("api/product/{0}", deleteAccountId));
+            HttpResponseMessage response = this._client.Delete(string.Format("api/account/{0}", deleteAccountId));
 
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("DeleteAccount({0}), Error with [{1}]", deleteAccountId, response.ReasonPhrase));
+
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
 
                 return;
             }
@@ -213,6 +244,9 @@ namespace ThreadLock.TestClient.Tests
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("GetBalance({0}), Error with [{1}]", accountId, response.ReasonPhrase));
 
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
+
                 return;
             }
 
@@ -228,6 +262,9 @@ namespace ThreadLock.TestClient.Tests
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("DoDeposit({0}), Error with [{1}]", accountId, response.ReasonPhrase));
 
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
+
                 return;
             }
 
@@ -242,6 +279,9 @@ namespace ThreadLock.TestClient.Tests
 
             if (!response.IsSuccessStatusCode) {
                 Console.WriteLine(string.Format("DoWithdraw({0}), Error with [{1}]", accountId, response.ReasonPhrase));
+
+                if (this._logger.IsErrorEnabled)
+                    this._logger.Error(response);
 
                 return;
             }
@@ -265,28 +305,46 @@ namespace ThreadLock.TestClient.Tests
         /// <returns></returns>
         private string GetRandomAccountId()
         {
-            return string.Format("{0}-{1}", this._accountIdPrefix, new Random().Next(0, this._sequencerGenerator.GetCurrent(this.Requester)+1));
+            string accountId = string.Format("{0}-{1}", this._accountIdPrefix, new Random().Next(0, this._sequencerGenerator.GetCurrent(this.Requester)+1));
+
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("GetRandomAccountId(), accountId = [{0}]", accountId);
+
+            return accountId;
         }
 
         private Account GetNewAccountItem()
         {
-            return new Account
+            var account = new Account
             {
                 Id = GetNewAccountId(),
                 Balance = GetRandomBalance(),
                 CreatedBy = this.Requester,
                 LastUpdatedBy = this.Requester
             };
+
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("GetNewAccountItem(), account = [{0}]", account);
+
+            return account;
         }
 
-        private Account GetEditAccountItem(Account account)
+        private Account GetAccountItemForEdit(Account account)
         {
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("GetAccountItemForEdit(), account = [{0}]", account);
+
             return account.UpdateBalance(GetRandomAmount(), this.Requester);
         }
 
         private string GetNewAccountId()
         {
-            return string.Format("{0}-{1}", this._accountIdPrefix, this._sequencerGenerator.GetNext(this.Requester));
+            string accountId = string.Format("{0}-{1}", this._accountIdPrefix, this._sequencerGenerator.GetNext(this.Requester));
+
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("GetNewAccountId(), accountId = [{0}]", accountId);
+
+            return accountId;
         }
 
         private decimal GetRandomBalance()

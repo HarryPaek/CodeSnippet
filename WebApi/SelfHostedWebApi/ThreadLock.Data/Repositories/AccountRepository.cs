@@ -1,5 +1,7 @@
-﻿using ePlatform.Data.Abstracts;
+﻿using ePlatform.Common.Extensions;
+using ePlatform.Data.Abstracts;
 using ePlatform.Data.Repositories;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +14,19 @@ namespace ThreadLock.Data.Repositories
 {
     public class AccountRepository : AbstractRepositoryBase<string, Account>, IAccountRepository
     {
+        private readonly ILog _logger = null;
         private readonly object _accountLock = new object();
         private readonly IDBAccessor _db;
 
-        public AccountRepository(IDBAccessor dbAccessor)
+        public AccountRepository(IDBAccessor dbAccessor, ILog logger): base(logger)
         {
+            if (logger == null)
+                throw new ArgumentNullException("logger");
+
             if (dbAccessor == null)
                 throw new ArgumentNullException("dbAccessor");
 
+            this._logger = logger;
             this._db = dbAccessor;
         }
 
@@ -164,7 +171,15 @@ namespace ThreadLock.Data.Repositories
                 string commandText = @"SELECT *
                                          FROM ACCOUNT_WEBAPI";
 
-                return  AccountList.ConvertFromDataTable(this._db.ExecuteSelect(commandText));
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("GetAllInternal(), commandText = [{0}]", commandText);
+
+                var accountList = AccountList.ConvertFromDataTable(this._db.ExecuteSelect(commandText));
+
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("GetAllInternal(), accountList = [{0}]", accountList.AsText());
+
+                return accountList;
             }
             catch (Exception)
             {
@@ -174,6 +189,9 @@ namespace ThreadLock.Data.Repositories
 
         protected override Account GetInternal(string id)
         {
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("GetInternal(), id = [{0}]", id);
+
             try
             {
                 string commandText = @"SELECT *
@@ -183,7 +201,14 @@ namespace ThreadLock.Data.Repositories
                 Dictionary<string, object> parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
                 parameters.Add(":AccountId", id);
 
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("GetInternal(), commandText = [{0}], parameters = [{1}]", commandText, parameters.AsText());
+
                 var accountList = AccountList.ConvertFromDataTable(this._db.ExecuteSelect(commandText, parameters));
+
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("GetInternal(), accountList = [{0}]", accountList.AsText());
+
                 return accountList.FirstOrDefault();
             }
             catch (Exception)
@@ -194,6 +219,9 @@ namespace ThreadLock.Data.Repositories
 
         protected override string AddInternal(Account item)
         {
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("AddInternal(), item = [{0}]", item);
+
             try
             {
                 long accountSequence = GetNextAccountSequence();
@@ -207,7 +235,13 @@ namespace ThreadLock.Data.Repositories
                 parameters.Add(":CreatedBy", item.CreatedBy);
                 parameters.Add(":LastUpdatedBy", item.CreatedBy);
 
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("AddInternal(), commandText = [{0}], parameters = [{1}]", commandText, parameters.AsText());
+
                 int affectedRowCount = this._db.ExecuteNonQuery(commandText, parameters);
+
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("AddInternal(), affectedRowCount = [{0}], item.Id = [{0}]", affectedRowCount, item.Id);
 
                 return item.Id;
             }
@@ -219,6 +253,9 @@ namespace ThreadLock.Data.Repositories
 
         protected override bool UpdateInternal(string id, Account item)
         {
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("UpdateInternal(), id = [{0}], item = [{1}]", id, item);
+
             try
             {
                 string commandText = @"UPDATE ACCOUNT_WEBAPI
@@ -232,7 +269,15 @@ namespace ThreadLock.Data.Repositories
                 parameters.Add(":Balance", item.Balance);
                 parameters.Add(":LastUpdatedBy", item.LastUpdatedBy);
 
-                return this._db.ExecuteNonQuery(commandText, parameters) > 0;
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("UpdateInternal(), commandText = [{0}], parameters = [{1}]", commandText, parameters.AsText());
+
+                int updated = this._db.ExecuteNonQuery(commandText, parameters);
+
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("UpdateInternal(), updated = [{0}]", updated);
+
+                return updated > 0;
             }
             catch (Exception ex)
             {
@@ -242,6 +287,9 @@ namespace ThreadLock.Data.Repositories
 
         protected override bool DeleteInternal(string id)
         {
+            if (this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("DeleteInternal(), id = [{0}]", id);
+
             try
             {
                 string commandText = @"DELETE ACCOUNT_WEBAPI
@@ -250,7 +298,15 @@ namespace ThreadLock.Data.Repositories
                 Dictionary<string, object> parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
                 parameters.Add(":AccountId", id);
 
-                return this._db.ExecuteNonQuery(commandText, parameters) > 0;
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("DeleteInternal(), commandText = [{0}], parameters = [{1}]", commandText, parameters.AsText());
+
+                int deleted = this._db.ExecuteNonQuery(commandText, parameters);
+
+                if (this._logger.IsDebugEnabled)
+                    this._logger.DebugFormat("DeleteInternal(), deleted = [{0}]", deleted);
+
+                return deleted > 0;
             }
             catch (Exception ex)
             {

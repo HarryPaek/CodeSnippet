@@ -1,4 +1,5 @@
 ﻿using ePlatform.WebApi.Abstracts;
+using log4net;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,25 +8,42 @@ namespace ePlatform.WebApi.Clients
 {
     public class DefaultWebApiClient<T> : IWebApiClient<T>
     {
+        private ILog _logger = null;
         private IWebApiConfigurationProvider _webApiConfiguration = null;
         private HttpClient _client = null;
 
-        public DefaultWebApiClient(IWebApiConfigurationProvider webApiConfiguration)
+        public DefaultWebApiClient(IWebApiConfigurationProvider webApiConfiguration, ILog logger)
         {
+            if (logger == null)
+                throw new ArgumentNullException("logger");
+
             if (webApiConfiguration == null)
                 throw new ArgumentNullException("webApiConfiguration");
 
             this._webApiConfiguration = webApiConfiguration;
+            this._logger = logger;
+
             InitClient();
         }
 
         private void InitClient()
         {
+            if (this._logger.IsDebugEnabled) {
+                this._logger.DebugFormat(" Client is initializing at {0}", this._webApiConfiguration.BaseServiceAddress);
+                this._logger.Debug(" ..... ..... .....");
+            }
+
+
             this._client = new HttpClient();
 
             this._client.BaseAddress = new Uri(this._webApiConfiguration.BaseServiceAddress);
             this._client.DefaultRequestHeaders.Accept.Clear();
             this._client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            if (this._logger.IsDebugEnabled) {
+                this._logger.Debug(" ..... ..... .....");
+                this._logger.DebugFormat(" Client was initialized at {0}", this._webApiConfiguration.BaseServiceAddress);
+            }
         }
 
         #region IWebApiClient implementation

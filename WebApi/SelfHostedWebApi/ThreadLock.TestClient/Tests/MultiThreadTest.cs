@@ -1,4 +1,5 @@
 ﻿using ePlatform.Common.DI;
+using log4net;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,13 +9,18 @@ namespace ThreadLock.TestClient.Tests
 {
     public class MultiThreadTest : ITest
     {
+        private ILog _logger = null;
         private ITestConfigurationProvider _testConfiguration = null;
 
-        public MultiThreadTest(ITestConfigurationProvider testConfiguration)
+        public MultiThreadTest(ITestConfigurationProvider testConfiguration, ILog logger)
         {
+            if (logger == null)
+                throw new ArgumentNullException("logger");
+
             if (testConfiguration == null)
                 throw new ArgumentNullException("testConfiguration");
 
+            this._logger = logger;
             this._testConfiguration = testConfiguration;
         }
 
@@ -59,6 +65,7 @@ namespace ThreadLock.TestClient.Tests
             if (!disposedValue) {
                 if (disposing) {
                     this._testConfiguration = null;
+                    this._logger = null;
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

@@ -1,4 +1,5 @@
 ﻿using ePlatform.Data.Abstracts;
+using log4net;
 using System;
 using System.Collections.Generic;
 
@@ -6,6 +7,13 @@ namespace ePlatform.Data.Repositories
 {
     public abstract class AbstractRepositoryBase<TId, TItem> : IRepository<TId, TItem> where TItem : IBaseEntity<TId>
     {
+        private readonly ILog _logger = null;
+
+        public AbstractRepositoryBase(ILog logger)
+        {
+            this._logger = logger;
+        }
+
         #region IRepository
 
         public virtual TId Add(TItem item)
@@ -86,6 +94,9 @@ namespace ePlatform.Data.Repositories
 
         public virtual bool Update(TId id, TItem item)
         {
+            if (this._logger != null && this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("Update(), id = [{0}], item = [{1}]", id, item);
+
             bool updated = false;
 
             lock (this.LockObject)
@@ -99,6 +110,9 @@ namespace ePlatform.Data.Repositories
                     throw;
                 }
             }
+
+            if (this._logger != null && this._logger.IsDebugEnabled)
+                this._logger.DebugFormat("Update(), updated = [{0}]", updated);
 
             return updated;
         }

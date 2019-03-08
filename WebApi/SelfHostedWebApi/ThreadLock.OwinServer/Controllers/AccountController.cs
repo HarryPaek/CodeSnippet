@@ -1,4 +1,5 @@
 ﻿using ePlatform.Data.Abstracts;
+using log4net;
 using System;
 using System.Web.Http;
 using ThreadLock.Data.Abstracts;
@@ -10,13 +11,18 @@ namespace ThreadLock.OwinServer.Controllers
 {
     public sealed class AccountController : ApiControllerBase<string, Account>
     {
+        private readonly ILog _logger = null;
         private readonly IAccountRepository _repository = null;
 
-        public AccountController(IAccountRepository repository)
+        public AccountController(IAccountRepository repository, ILog logger): base(logger)
         {
+            if (logger == null)
+                throw new ArgumentNullException("logger");
+
             if (repository == null)
                 throw new ArgumentNullException("repository");
 
+            this._logger = logger;
             this._repository = repository;
         }
 

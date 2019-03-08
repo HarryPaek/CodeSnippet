@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity.Configuration;
+﻿using log4net.Config;
+using Microsoft.Practices.Unity.Configuration;
 using System;
 using Unity;
 
@@ -15,6 +16,9 @@ namespace ePlatform.Common.DI
 
             try
             {
+                //Initialize log4net
+                InitLog4NetConfiguration();
+
                 _container.LoadConfiguration();
             }
             catch (Exception ex)
@@ -57,5 +61,14 @@ namespace ePlatform.Common.DI
                 throw ex;
             }
         }
+
+        #region Private Methods
+
+        private static void InitLog4NetConfiguration()
+        {
+            XmlConfigurator.Configure();
+        }
+
+        #endregion
     }
 }
