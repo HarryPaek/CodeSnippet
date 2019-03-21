@@ -1,0 +1,19 @@
+2/26 삼성전자 안전환경, SDS 기술팀 미팅, 송도, 문창식
+
+
+Address: No. 83, Middle Zhongshan Road, Songjiang District, Shanghai, 201600
+Phone:  +86 021 37859999
+
+skhy.X0101813@partner.sk.com
+
+
+EECOne 데모 동영상:		http://gofile.me/3B2YQ/TXPrkUG6m
+Cogineer 데모 동영상:	http://gofile.me/3B2YQ/6P30ZBhfz
+
+netsh http add urlacl url=http://+:28008/ user=Administrators listen=yes
+
+netsh http add urlacl url=http://192.168.0.8:28008/ user=Everyone
+
+{"Action":"Test Action","ProjectName":"Test Project","Parameters":[{"Key":"TagId","Value":"Tag-Id"},{"Key":"PortNumber","Value":"Port-Number"}]}
+
+{"Action":"Test Action","ProjectName":"Test Postman","Parameters":[{"Key":"TagId","Value":"Tag-postman"},{"Key":"PortNumber","Value":"Port-postman"}]}

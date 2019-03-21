@@ -149,6 +149,7 @@
     <Compile Include="Abstracts\ApiControllerBase.cs" />
     <Compile Include="AppStart\StartUp.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EplanServiceController.cs" />
     <Compile Include="DefaultWebApiServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

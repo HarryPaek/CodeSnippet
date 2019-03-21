@@ -121,6 +121,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\DefaultTestConfigurationProvider.cs" />
+    <Compile Include="Tests\EplanServiceTest.cs" />
     <Compile Include="Tests\MultiThreadTest.cs" />
     <Compile Include="Tests\SingleTest.cs" />
     <Compile Include="Tests\TestFactory.cs" />
