@@ -6,7 +6,7 @@ namespace IListSourceImplementation.Models
     {
         private string _id;
         private string _name;
-        private Decimal parkingId;
+        private Decimal _parkingId;
 
         public Employee() : this(string.Empty, 0) { }
         public Employee(string name) : this(name, 0) { }
@@ -16,8 +16,8 @@ namespace IListSourceImplementation.Models
             this._id = System.Guid.NewGuid().ToString();
 
             // Set values
-            this.Name = name;
-            this.ParkingID = parkingId;
+            this._name = name;
+            this._parkingId = parkingId;
         }
 
         public string ID
@@ -43,11 +43,11 @@ namespace IListSourceImplementation.Models
         const string PARKING_ID = "Salary";
         public Decimal ParkingID
         {
-            get { return parkingId; }
+            get { return _parkingId; }
             set
             {
-                if (parkingId != value) {
-                    parkingId = value;
+                if (_parkingId != value) {
+                    _parkingId = value;
 
                     // Raise the PropertyChanged event.
                     OnPropertyChanged(PARKING_ID);

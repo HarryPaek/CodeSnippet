@@ -4,11 +4,22 @@ namespace IListSourceImplementation.Models
 {
     public class EmployeeListSource : Component, IListSource
     {
-        public EmployeeListSource() { }
+        private readonly EmployeeDataSample _sampleData = null;
+
+        public EmployeeListSource()
+        {
+            this._sampleData = new EmployeeDataSample();
+        }
 
         public EmployeeListSource(IContainer container)
         {
             container.Add(this);
+            this._sampleData = new EmployeeDataSample();
+        }
+
+        public EmployeeDataSample SampleData
+        {
+            get { return this._sampleData; }
         }
 
         #region IListSource Members
@@ -23,7 +34,7 @@ namespace IListSourceImplementation.Models
             BindingList<Employee> ble = new BindingList<Employee>();
 
             if (!this.DesignMode) {
-                ble = new BindingList<Employee>(new EmployeeDataSample());
+                ble = new BindingList<Employee>(this.SampleData);
 
                 //ble.Add(new Employee("Aaberg, Jesper", 26000000));
                 //ble.Add(new Employee("Cajhen, Janko", 19600000));

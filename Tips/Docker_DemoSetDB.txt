@@ -1,0 +1,70 @@
+docker pull wnameless/oracle-xe-11g
+
+docker run -d -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --name DemoSet wnameless/oracle-xe-11g
+
+docker commit [Container_ID] oracle11g/eplan-demoset
+
+docker image save -o e:\temp\EplanDemoSet.tar oracle11g/eplan-demoset
+
+docker image load -i F:\Docker\EplanDemoSet.tar
+
+docker image load -i G:\Docker\EplanDemoSet.tar
+
+docker image load -i H:\Docker\EplanDemoSet.tar
+
+docker image load -i E:\Temp\EplanDemoSet.tar
+
+docker run -d -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --name DemoSet oracle11g/eplan-demoset
+
+docker run -d -p 9022:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --name DemoSet oracle11g/eplan-demoset
+
+=================================================================================================================================
+= 2019. 03. 24 신규 이미지 생성(V2)
+=================================================================================================================================
+docker commit 0697697e1411 oracle11g/eplan-demoset-v2
+
+docker image save -o E:\Temp\Docker\EplanDemoSet(V2).tar oracle11g/eplan-demoset-v2
+
+docker image load -i E:\Temp\Docker\EplanDemoSet(V2).tar
+docker image load -i C:\Temp\Docker\EplanDemoSet(V2).tar
+
+docker run -d -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --name DemoSet-V2 oracle11g/eplan-demoset-v2
+
+/*
+ 참고
+ 
+
+별칭 분석을 위해 TNSNAMES 어댑터 사용
+(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.99.100)(PORT = 1521)) (CONNECT_DATA = (SID = XE)))에 접속하려고 시도하는 중
+확인(10밀리초)
+
+별칭 분석을 위해 TNSNAMES 어댑터 사용
+(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 210.100.161.5)(PORT = 1521)) (CONNECT_DATA = (SID = XE)))에 접속하려고 시도하는 중
+확인(20밀리초)
+
+
+[root@zetawiki ~]# ip addr | grep "inet "
+    inet 127.0.0.1/8 scope host lo
+    inet 192.168.0.39/24 brd 192.168.0.255 scope global eth1
+
+[root@zetawiki ~]# ip addr | grep "inet " | grep brd | awk '{print $2}' | awk -F/ '{print $1}'
+192.168.0.39
+
+
+DOCKER =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 210.100.161.5)(PORT = 1521))
+    (CONNECT_DATA =
+      (SID = XE)
+    )
+  )
+
+DOCKER2 =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.99.100)(PORT = 1521))
+    (CONNECT_DATA =
+      (SID = XE)
+    )
+  )
+
+*/

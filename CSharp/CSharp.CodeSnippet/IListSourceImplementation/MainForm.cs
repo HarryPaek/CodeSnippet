@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IListSourceImplementation.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,8 @@ namespace IListSourceImplementation
         private void btnOK_Click(object sender, EventArgs e)
         {
             var dataBindings  = this.dataGridViewTop.DataBindings;
+
+            var employeeList = this.dataGridViewTop.DataSource as EmployeeListSource;
         }
     }
 }
