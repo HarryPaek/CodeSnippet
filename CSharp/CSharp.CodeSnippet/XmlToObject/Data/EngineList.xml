@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EngineList>
+    <BaseEngine Id="H17" Description="Engine 17" />
+    <BaseEngine Id="H21" Description="Engine 21">
+	    <EnigneDetail Id="H21C" Description="Engine 21 Type C" InUse = "true" />
+		<EnigneDetail Id="H21D" Description="Engine 21 Type D" InUse = "true" />
+		<EnigneDetail Id="H21DF" Description="Engine 21 Type DF" InUse = "true" />
+		<EnigneDetail Id="H21/32" Description="Engine 21 Type 32" InUse = "true" />
+		<EnigneDetail Id="H21/32DCF" Description="Engine 21 Type 32DEF" InUse = "false" />
+		<EnigneDetail Id="H21/32U" Description="Engine 21 Type 32U" InUse = "false" />
+	</BaseEngine>
+	<BaseEngine Id="H25" Description="Engine 25">
+	    <EnigneDetail Id="H25B" Description="Engine 25 Type B" InUse = "true" />
+		<EnigneDetail Id="H25D" Description="Engine 25 Type D" InUse = "false" />
+		<EnigneDetail Id="H25U" Description="Engine 25 Type U" InUse = "false" />
+		<EnigneDetail Id="H25SCR" Description="Engine 25 Type SCR" InUse = "false" />
+		<EnigneDetail Id="H25/48" Description="Engine 25 Type 48" InUse = "true" />
+	</BaseEngine>
+	<BaseEngine Id="H27" Description="Engine 27">
+	    <EnigneDetail Id="H27B" Description="Engine 27 Type B" InUse = "true" />
+		<EnigneDetail Id="H27/32" Description="Engine 27 Type 32" InUse = "true" />
+		<EnigneDetail Id="H27/39" Description="Engine 27 Type 39" InUse = "true" />
+		<EnigneDetail Id="H27/대형" Description="Engine 27 Type 대형" InUse = "true" />
+	</BaseEngine>
+</EngineList>
