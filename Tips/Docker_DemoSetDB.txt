@@ -32,7 +32,9 @@ docker run -d -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --n
 
 /*
  참고
- 
+ scott/tiger
+ system/oracel
+ SYS/oracle
 
 별칭 분석을 위해 TNSNAMES 어댑터 사용
 (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.99.100)(PORT = 1521)) (CONNECT_DATA = (SID = XE)))에 접속하려고 시도하는 중
