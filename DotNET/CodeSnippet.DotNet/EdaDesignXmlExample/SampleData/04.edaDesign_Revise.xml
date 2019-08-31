@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<EDADesign xmlns="http://www.plmxml.org/Schemas/tceda">
+    <CCA name="HHI-EMD TC Interfcae 20190830-002" itemId="B94-306050-5" revId="1" bom="false">
+        <dataset type="combined" UID="gba1GKTwowjmMD" src="d:\HHIEMD\ECAD\staging_2_3\HHI\eplan_dev01_-2101106228\EPLAN\latest\B94-306050-5" checkedOut="true" version="1">
+            <attr value="B94-306050-5@HHI-EMD TC Interfcae 20190830-002.zw1"/>
+            <attr name="BaseEngineType" value=""/>
+            <attr name="EngineType" value="H35DF"/>
+            <attr name="DrawingNo" value="B94-306050-5"/>
+            <attr name="RevisionNo" value="0"/>
+            <attr name="ItemNameOLD" value="B94-306050-5@HHI-EMD TC Interfcae 20190830-002"/>
+            <attr name="ItemName" value="HHI-EMD TC Interfcae 20190830-002"/>
+            <attr name="DrawingDescription" value="EPLAN Test Project 20190830-002 By Hx Rev01"/>
+            <attr name="CreateUser" value="KBS"/>
+            <attr name="CheckUser" value="KBG"/>
+            <attr name="ApprovalUser" value="HJS"/>
+            <attr name="LicenseType" value="B9"/>
+            <attr name="DrawingSizeCode" value="4"/>
+            <attr name="DrawingSerialNo" value="306050"/>
+            <attr name="DrawingCheckBit" value="5"/>
+            <attr name="DrawingDwg5" value="0"/>
+            <attr name="DrawingSize" value="A4"/>
+            <attr name="DrawingFormat" value="A4"/>
+            <attr name="InfoNo" value=""/>
+            <attr name="DrawingPortrait" value="L"/>
+            <attr name="MsNo" value=""/>
+            <attr name="DataInformation" value=""/>
+            <attr name="TotalPage" value="1"/>
+            <attr name="PartGroup" value="40.Control"/>
+            <attr name="ReviseDate" value="2019-08-30 오후 3:11:30"/>
+            <attr name="ReviseReason" value="Revised By EDA@Pre_Project_Header_P82PDM@20190830152121341"/>
+            <attr name="DrawingScale" value="1:1"/>
+            <attr name="DrawingSecurity" value="B"/>
+            <attr name="PartUnit" value="ST"/>
+            <attr name="ValidationStatus" value="B94-306050-5.0"/>
+            <attr name="HullNo" value=""/>
+            <attr name="Customer" value=""/>
+            <attr name="ShipBuilder" value=""/>
+            <attr name="TypeOfShip" value=""/>
+            <attr name="EngineDescription" value=""/>
+            <attr name="Classification" value=""/>
+            <attr name="DrawingTitle" value="설명 10011"/>
+            <attr name="CustomerSite" value=""/>
+            <attr name="EngineNumber" value=""/>
+            <attr name="ReleaseStatus" value=""/>
+        </dataset>
+    </CCA>
+</EDADesign>

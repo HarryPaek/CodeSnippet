@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<EDADesign xmlns="http://www.plmxml.org/Schemas/tceda">
+    <CCA name="HHI-EMD TC Interface Test 20180828-006 By Hx" itemId="B94-306042-3" revId="0" UID="gud1mt$howjmMD">
+        <dataset type="combined" UID="g_R1mt$howjmMD" src="d:\HHIEMD\ECAD\staging_2_3\HHI\eplan_dev01_-2101106228\EPLAN\latest\B94-306042-3" checkedOut="false" version="1" name="B94-306042-3"/>
+    </CCA>
+</EDADesign>
