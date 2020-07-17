@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetDBExamples", "AdoNetD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdaDesignXmlExample", "EdaDesignXmlExample\EdaDesignXmlExample.csproj", "{54397651-8104-46FE-BF33-4A2E74D06746}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceIL", "TraceIL\TraceIL.csproj", "{DB8EEE62-954F-4731-B975-D6CCDBC56246}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileExplorer", "FileExplorer\FileExplorer.csproj", "{440B20D4-C1FF-456B-9630-99BF8FAB06FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{54397651-8104-46FE-BF33-4A2E74D06746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54397651-8104-46FE-BF33-4A2E74D06746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54397651-8104-46FE-BF33-4A2E74D06746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB8EEE62-954F-4731-B975-D6CCDBC56246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8EEE62-954F-4731-B975-D6CCDBC56246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8EEE62-954F-4731-B975-D6CCDBC56246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8EEE62-954F-4731-B975-D6CCDBC56246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440B20D4-C1FF-456B-9630-99BF8FAB06FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440B20D4-C1FF-456B-9630-99BF8FAB06FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440B20D4-C1FF-456B-9630-99BF8FAB06FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440B20D4-C1FF-456B-9630-99BF8FAB06FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
