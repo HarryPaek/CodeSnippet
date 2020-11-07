@@ -5,3 +5,7 @@
  - EplanWindchillControllerClient.bat로 클라이언트 서버스 시작
 
 2. Demo 시나리오
+
+
+3. Cloud License Server
+ - 172.19.18.4
