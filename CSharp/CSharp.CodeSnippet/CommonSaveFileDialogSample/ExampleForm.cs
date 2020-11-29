@@ -16,6 +16,9 @@ namespace CommonSaveFileDialogSample
             // Displays a SaveFileDialog so the user can save the Image
             // assigned to Button2.
             CommonSaveFileDialog saveFileDialog1 = new CommonSaveFileDialog();
+            saveFileDialog1.DefaultDirectory = "E:\\Downloads";
+            // saveFileDialog1.InitialDirectory = "E:\\Downloads";
+            saveFileDialog1.RestoreDirectory = true;
             saveFileDialog1.Filters.Add(new CommonFileDialogFilter("Jpeg Image", "*.jpg") { ShowExtensions = true });
             saveFileDialog1.Filters.Add(new CommonFileDialogFilter("Bitmap Image", "*.bmp") { ShowExtensions = true });
             saveFileDialog1.Filters.Add(new CommonFileDialogFilter("Gif Image", "*.gif") { ShowExtensions = true });

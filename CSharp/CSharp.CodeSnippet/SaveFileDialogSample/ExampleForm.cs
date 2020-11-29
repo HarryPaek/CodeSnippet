@@ -15,6 +15,8 @@ namespace SaveFileDialogSample
             // Displays a SaveFileDialog so the user can save the Image
             // assigned to Button2.
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = "E:\\Downloads";
+            saveFileDialog1.RestoreDirectory = true;
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             saveFileDialog1.Title = "Save an Image File";
             saveFileDialog1.ShowDialog();
