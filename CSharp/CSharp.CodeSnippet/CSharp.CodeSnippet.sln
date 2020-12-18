@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonSaveFileDialogSample"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalDateTimeFormat", "LocalDateTimeFormat\LocalDateTimeFormat.csproj", "{EE90097A-C48C-4805-BB2B-BFF9CB59FB0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeViewDragDrop", "TreeViewDragDrop\TreeViewDragDrop.csproj", "{0613CD70-43EF-41AB-9165-CB55E3177BF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -335,6 +337,18 @@ Global
 		{EE90097A-C48C-4805-BB2B-BFF9CB59FB0C}.X64|Any CPU.Build.0 = Release|Any CPU
 		{EE90097A-C48C-4805-BB2B-BFF9CB59FB0C}.X64|x64.ActiveCfg = Release|Any CPU
 		{EE90097A-C48C-4805-BB2B-BFF9CB59FB0C}.X64|x64.Build.0 = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Debug|x64.Build.0 = Debug|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Release|x64.ActiveCfg = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.Release|x64.Build.0 = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.X64|Any CPU.ActiveCfg = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.X64|Any CPU.Build.0 = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.X64|x64.ActiveCfg = Release|Any CPU
+		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.X64|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
