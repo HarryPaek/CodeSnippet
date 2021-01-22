@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalDateTimeFormat", "Loca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeViewDragDrop", "TreeViewDragDrop\TreeViewDragDrop.csproj", "{0613CD70-43EF-41AB-9165-CB55E3177BF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewMessageBox", "NewMessageBox\NewMessageBox.csproj", "{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -349,6 +351,18 @@ Global
 		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.X64|Any CPU.Build.0 = Release|Any CPU
 		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.X64|x64.ActiveCfg = Release|Any CPU
 		{0613CD70-43EF-41AB-9165-CB55E3177BF8}.X64|x64.Build.0 = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.Release|x64.Build.0 = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.X64|Any CPU.ActiveCfg = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.X64|Any CPU.Build.0 = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.X64|x64.ActiveCfg = Release|Any CPU
+		{D2028E19-C89A-46D2-9CA0-5C1832FBE0E2}.X64|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
