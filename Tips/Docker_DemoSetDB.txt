@@ -37,6 +37,7 @@ docker commit 0697697e1411 oracle11g/eplan-demoset-v2.1
 
 docker image save -o E:\APITemp\Docker\EplanDemoSet(V2.1).tar oracle11g/eplan-demoset-v2.1
 
+docker image load -i F:\Docker\EplanDemoSet(V2.1).tar
 docker image load -i E:\APITemp\Docker\EplanDemoSet(V2.1).tar
 docker image load -i C:\Temp\Docker\EplanDemoSet(V2.1).tar
 
