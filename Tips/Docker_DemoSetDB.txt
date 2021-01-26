@@ -19,7 +19,7 @@ docker run -d -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --n
 docker run -d -p 9022:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --name DemoSet oracle11g/eplan-demoset
 
 =================================================================================================================================
-= 2019. 03. 24 신규 이미지 생성(V2)
+= 2019. 03. 24 신규 이미지 생성(V2) -> 2021.1.26 폐기함
 =================================================================================================================================
 docker commit 0697697e1411 oracle11g/eplan-demoset-v2
 
@@ -29,6 +29,18 @@ docker image load -i E:\Temp\Docker\EplanDemoSet(V2).tar
 docker image load -i C:\Temp\Docker\EplanDemoSet(V2).tar
 
 docker run -d -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --name DemoSet-V2 oracle11g/eplan-demoset-v2
+
+=================================================================================================================================
+= 2021. 01. 26 신규 이미지 생성(V2.1)
+=================================================================================================================================
+docker commit 0697697e1411 oracle11g/eplan-demoset-v2.1
+
+docker image save -o E:\APITemp\Docker\EplanDemoSet(V2.1).tar oracle11g/eplan-demoset-v2.1
+
+docker image load -i E:\APITemp\Docker\EplanDemoSet(V2.1).tar
+docker image load -i C:\Temp\Docker\EplanDemoSet(V2.1).tar
+
+docker run -d -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true --name DemoSet-V2 oracle11g/eplan-demoset-v2.1
 
 /*
  참고
