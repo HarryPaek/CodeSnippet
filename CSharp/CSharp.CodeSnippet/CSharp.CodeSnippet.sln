@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFacWithNet452", "AutoFa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFacWith472", "AutoFacWith472\AutoFacWith472.csproj", "{5A5BD56D-3790-4D86-9B8B-FF0406869C0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondApplicatonDomain", "SecondApplicatonDomain\SecondApplicatonDomain.csproj", "{784016ED-6478-4A92-B2EC-DA282E6422BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -391,6 +393,18 @@ Global
 		{5A5BD56D-3790-4D86-9B8B-FF0406869C0D}.X64|Any CPU.Build.0 = Release|Any CPU
 		{5A5BD56D-3790-4D86-9B8B-FF0406869C0D}.X64|x64.ActiveCfg = Release|Any CPU
 		{5A5BD56D-3790-4D86-9B8B-FF0406869C0D}.X64|x64.Build.0 = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Debug|x64.Build.0 = Debug|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Release|x64.ActiveCfg = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.Release|x64.Build.0 = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.X64|Any CPU.ActiveCfg = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.X64|Any CPU.Build.0 = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.X64|x64.ActiveCfg = Release|Any CPU
+		{784016ED-6478-4A92-B2EC-DA282E6422BF}.X64|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
