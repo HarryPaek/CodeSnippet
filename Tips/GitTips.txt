@@ -46,3 +46,9 @@ git config --local -l
 git remote add origin ssh://ek050_harry@133.x.x.221:9022/~/GitRepo/LSCable.git
 
 git push --set-upstream origin master
+
+# Branch Commit
+
+git push <remote> <branch>
+
+git push origin UnityConfiguration
