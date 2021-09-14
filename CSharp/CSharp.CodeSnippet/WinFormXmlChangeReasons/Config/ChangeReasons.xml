@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ChangeReasons>
+  <ChangeReason key="A" name="A Name" desc="A Description">
+    <DisplayText locale="ko-KR"  text="에이 설명" />
+    <DisplayText locale="en-GB"  text="A Description(en-GB)" />
+  </ChangeReason>
+  <ChangeReason key="B" name="B Name" desc="B Description">
+    <DisplayText locale="ko-KR"  text="비 설명" />
+    <DisplayText locale="en-GB"  text="B Description(en-GB)" />
+  </ChangeReason>
+  <ChangeReason key="C" name="B Name" desc="C Description">
+    <DisplayText locale="ko"  text="씨 설명(ko)" />
+    <DisplayText locale="en"  text="C Description(en)" />
+  </ChangeReason>
+  <ChangeReason key="D" name="D Name" desc="D Description" />
+</ChangeReasons>
