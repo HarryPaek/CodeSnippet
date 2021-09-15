@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace WinFormXmlChangeReasons.Models
 {
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
@@ -7,7 +9,7 @@ namespace WinFormXmlChangeReasons.Models
     {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ChangeReason")]
-        public ChangeReason[] Items
+        public List<ChangeReason> Items
         {
             get;
             set;
@@ -43,7 +45,7 @@ namespace WinFormXmlChangeReasons.Models
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("DisplayText")]
-        public ChangeReasonText[] DisplayTexts
+        public List<ChangeReasonText> DisplayTexts
         {
             get;
             set;

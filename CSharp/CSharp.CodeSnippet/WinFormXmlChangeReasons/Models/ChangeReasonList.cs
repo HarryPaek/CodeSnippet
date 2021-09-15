@@ -13,7 +13,7 @@ namespace WinFormXmlChangeReasons.Models
             if (this.Items == null)
                 return 0;
 
-            return this.Items.Length;
+            return this.Items.Count;
         }
     }
 
@@ -34,7 +34,7 @@ namespace WinFormXmlChangeReasons.Models
             if (locale == null)
                 throw new ArgumentNullException(nameof(locale));
 
-            if (this.DisplayTexts == null || this.DisplayTexts.Length == 0)
+            if (this.DisplayTexts == null || this.DisplayTexts.Count == 0)
                 return this.Description;
 
             ChangeReasonText reasonText = this.DisplayTexts.FirstOrDefault(dt => locale.Name.Equals(dt.LocaleText, StringComparison.OrdinalIgnoreCase));
