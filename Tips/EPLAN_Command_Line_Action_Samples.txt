@@ -1,0 +1,7 @@
+"C:\Program Files\EPLAN\Platform\2.9.4\Bin\EPLAN.exe" /Variant:"Electric P8" /Auto /Quiet:2 /NoLicenseDialog partslist /TYPE:IMPORTTOSYSTEM /MODE:2 /FORMAT:IXPamImportCSV /IMPORTFILE:C:\Temp\PartDB29SP1_HX_Exports.csv /CFGFILE:$(MD_PARTS)\csvimportexport.cfg
+
+"C:\Program Files\EPLAN\Platform\2022.0.3\Bin\EPLAN.exe" /Variant:"Electric P8" /Auto /Quiet:2 /NoLicenseDialog partslist /TYPE:IMPORTTOSYSTEM /MODE:2 /FORMAT:IXPamImportCSV /IMPORTFILE:C:\Temp\PartDB29SP1_HX_Exports.csv /CFGFILE:$(MD_PARTS)\csvimportexport.cfg
+
+"C:\Program Files\EPLAN29\Platform\2.9.4\Bin\EPLAN.exe" /Variant:"Electric P8" partslist /TYPE:IMPORTTOSYSTEM /MODE:2 /FORMAT:IXPamImportCSV /IMPORTFILE:E:\EPLAN_Temp\PartDB29SP1_HX_Exports.csv /CFGFILE:$(MD_PARTS)\csvimportexport.cfg
+
+"C:\Program Files\EPLAN\Platform\2022.0.3\Bin\EPLAN.exe" /Variant:"Electric P8" partslist /TYPE:IMPORTTOSYSTEM /MODE:2 /FORMAT:IXPamImportCSV /IMPORTFILE:C:\Temp\PartDB29SP1_HX_Exports.csv /CFGFILE:$(MD_PARTS)\csvimportexport.cfg
