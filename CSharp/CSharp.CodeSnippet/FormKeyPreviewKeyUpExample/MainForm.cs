@@ -16,10 +16,27 @@ namespace FormKeyPreviewKeyUpExample
 
         private void MainForm_KeyUp(object sender, KeyEventArgs e)
         {
+            MessageBox.Show(this, string.Format("KeyEventArgs.KeyCode=[{0}], KeyEventArgs.KeyData=[{1}]", e.KeyCode, e.KeyData), "::: MainForm_KeyUp");
+
             switch (e.KeyCode)
             {
                 case Keys.F2:
                     this.btnSimpleClick.PerformClick();
+                    break;
+
+                case Keys.F5:
+                    int tabCount = this.tabControlMain.TabCount;
+
+                    if (tabCount > 1) {
+                        int newSelectedIndex = this.tabControlMain.SelectedIndex;
+                        newSelectedIndex++;
+
+                        if (newSelectedIndex >= tabCount)
+                            newSelectedIndex = 0;
+
+                        this.tabControlMain.SelectedIndex = newSelectedIndex;
+                    }
+
                     break;
 
                 default:
