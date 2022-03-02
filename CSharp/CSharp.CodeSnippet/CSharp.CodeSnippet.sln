@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZebraZPLPrint", "ZebraZPLPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormKeyPreviewKeyUpExample", "FormKeyPreviewKeyUpExample\FormKeyPreviewKeyUpExample.csproj", "{1F26623A-B850-4BC9-864C-1FCF7FDF5B58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenresPlaysExample", "GenresPlaysExample\GenresPlaysExample.csproj", "{F00EE896-1AA1-4E9B-9A19-26F0A464C282}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -503,6 +505,18 @@ Global
 		{1F26623A-B850-4BC9-864C-1FCF7FDF5B58}.X64|Any CPU.Build.0 = Release|Any CPU
 		{1F26623A-B850-4BC9-864C-1FCF7FDF5B58}.X64|x64.ActiveCfg = Release|Any CPU
 		{1F26623A-B850-4BC9-864C-1FCF7FDF5B58}.X64|x64.Build.0 = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Debug|x64.Build.0 = Debug|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Release|x64.ActiveCfg = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.Release|x64.Build.0 = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.X64|Any CPU.ActiveCfg = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.X64|Any CPU.Build.0 = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.X64|x64.ActiveCfg = Release|Any CPU
+		{F00EE896-1AA1-4E9B-9A19-26F0A464C282}.X64|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
