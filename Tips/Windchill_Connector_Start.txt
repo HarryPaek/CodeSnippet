@@ -9,3 +9,24 @@
 
 3. Cloud License Server
  - 172.19.18.4
+
+
+===================================================
+WT 12.0 (2022.03)
+
+Windows:
+Administrator / Inneo 5D
+
+SQL Server
+sa/as
+
+Windchill
+wcadmin / wcadmin (site admin)
+jehrenstein / jehrenstein (org admin)
+eplan / eplan (normal user)
+
+WT internal 
+pdmlink12 / pdmlink12
+cn=Manager/ldapadmin
+solradmin / solradmin
+
