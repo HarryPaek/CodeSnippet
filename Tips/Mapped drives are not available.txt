@@ -6,3 +6,7 @@ Detail to configure the EnableLinkedConnections registry entry
  - In the Edit DWORD Value dialog box, type 1 in the Value data field, and then select OK.
  - Exit Registry Editor, and then restart the computer.
  
+ - 참고 문서
+   => https://docs.microsoft.com/en-us/troubleshoot/windows-client/networking/mapped-drives-not-available-from-elevated-command
+
+ 
