@@ -9,4 +9,6 @@ Detail to configure the EnableLinkedConnections registry entry
  - 참고 문서
    => https://docs.microsoft.com/en-us/troubleshoot/windows-client/networking/mapped-drives-not-available-from-elevated-command
 
- 
+ - 윈도우 서버 종료 이유 선택 메시지 비활성화
+   => https://helpcenter.itopia.com/en/articles/698737-group-policy-method-to-disable-shutdown-event-tracker-in-windows-server
+   

@@ -36,4 +36,5 @@ DMS 고객 PILOT 테스트를 위한 설치 패키지를 아래와 같이 전달
 백종근 드림
 
 
-GET Download Link: http://eplankorea.synology.me:58219/sharing/eiQc0UHkF
+GET   Download Link: http://gofile.me/3B2YQ/1gtMhk6c5
+Zetta Download Link: http://gofile.me/3B2YQ/GebHK0GRG
