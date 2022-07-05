@@ -36,5 +36,10 @@ DMS 고객 PILOT 테스트를 위한 설치 패키지를 아래와 같이 전달
 백종근 드림
 
 
-GET   Download Link: http://gofile.me/3B2YQ/1gtMhk6c5
-Zetta Download Link: http://gofile.me/3B2YQ/GebHK0GRG
+GET        Download Link: http://gofile.me/3B2YQ/1gtMhk6c5
+Zetta      Download Link: http://gofile.me/3B2YQ/GebHK0GRG
+동성시스템 Download Link: http://gofile.me/3B2YQ/t14ohA32C
+DMS 매뉴얼 Download Link: http://gofile.me/3B2YQ/C6hJZRjLX
+
+SQL Server 2019 Express : http://gofile.me/3B2YQ/tUg9zl5Nc
+SQL Server SSMS         : http://gofile.me/3B2YQ/7tbSJnyZ5
