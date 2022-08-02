@@ -13,17 +13,36 @@
 ===================================================
 WT 11.0 (2019.03)
 
-Windows:
-??
+Server: wtpdml102.ratc-com.de
 
-SQL Server
-sa/as (??)
+Windows-PWD: Administrator/hallo
+MSSQL-PWD: SA/as
+SQL-Windchill user: pdmlink/pdmlink
+
+siteadmin: wcadmin/wcadmin
+orgadmin Inneo:
+
+ldap:cn=Manager/ldapadmin
 
 Windchill
 wcadmin / wcadmin (site admin)
 jehrenstein / jehrenstein (org admin)
+epladmin / eplan (org admin)
+
 eplan / eplan (normal user)
 
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\installutil.exe" "C:\PTC\eplanservice\install\RunWTServerAppAsService.exe"
+
+C:\Users\Public\EPLAN\Data\Parts\EPLANKorea\WTC_ESS_Parts001.mdb
+
+C:\Program Files\EPLAN\ERP-PDM Integration Suite\Eplan.Dispatcher\Eplan.Dispatcher.exe
+
+C:\Users\Public\EPLAN\ERP-PDM Integration Suite\ConfigurationFiles\ERP-PDM_Config.xml
+
+.txt;.doc;.xml;.xls
+
+참고
+ - SC DELETE servicename => SC DELETE EPLAN.WT.SYNC
 
 ===================================================
 WT 12.0 (2022.03)
@@ -44,3 +63,47 @@ pdmlink12 / pdmlink12
 cn=Manager/ldapadmin
 solradmin / solradmin
 
+===================================================
+WT 12.1 (2022.07)
+
+Windows
+Administrator=Ptc2019#
+
+Windchill
+Administrator=ptc (site administrator; similar like wcadmin in the past)
+eplanOrgAdmin=eplan (organisation administrator; similar like jehrenstein in the past)
+eplan=eplan (standard user)
+
+SQL
+sa=Epl@n123
+
+How to run Windchill?
+1. Run "Windchill Services" icon on desktop
+2. Wait until cmd finished
+3. Run "Windchill Start" icon on desktop
+
+Other:
+LDAP
+o=ptc (ProjectLink Search Base DN)
+cn=Manager=ldapadmin (ProjectLink Admin User DN)
+
+Oracle (service name: Icenterv01:1521:wind)
+system=manager (System manager)
+pdm12=pdm12 (Database user)
+
+Integrity
+Administrator=ptc
+
+Thingworx Foundation
+Administrator=ptc
+
+Thingworx Flow
+Administrator=ptc
+
+https://icenterv01.ptcnet.ptc.com:444/Windchill
+
+icenterv01.ptcnet.ptc.com
+
+"G:\PTC\EplanService\jre\bin\keytool" -importcert -file “G:\Install\Windchill_Icenterv01.cer” -keystore "G:\PTC\EplanService\jre\lib\security\cacerts" -storepass changeit
+
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\installutil.exe" "G:\PTC\eplanservice\install\RunWTServerAppAsService.exe"

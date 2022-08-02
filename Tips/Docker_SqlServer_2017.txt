@@ -17,3 +17,15 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Test@123450" -e "MSSQL_PID=Express
 docker exec -it <container_id|container_name> /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P <your_password>
 
 https://go.microsoft.com/fwlink/?linkid=2099216
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+DMS DEMO DB Docker Image Export/Import (V1, 2022.07.12)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+docker commit cbe3cccd55f5 sqlserver2017/dms-demoset-v220712
+
+docker image save -o E:\EPLAN_Temp\Docker\DMSDemoSet(V220712).tar sqlserver2017/dms-demoset-v220712
+
+docker image load -i E:\EPLAN_Temp\Docker\DMSDemoSet(V220712).tar
+
+docker run -d -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Test@123450" -e "TZ=Asia/Seoul" -p 1433:1433 --name DMSDemoSet-V220712 sqlserver2017/dms-demoset-v220712

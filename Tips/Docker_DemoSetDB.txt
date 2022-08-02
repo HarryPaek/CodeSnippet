@@ -83,3 +83,5 @@ DOCKER2 =
   )
 
 */
+
+runas /user:KRSEO6475\HarryPaek "Docker Desktop.exe"
