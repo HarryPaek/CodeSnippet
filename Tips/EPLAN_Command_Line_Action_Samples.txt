@@ -11,3 +11,5 @@
 
 "C:\Program Files\EPLAN29\Platform\2.9.4\Bin\EPLAN.exe" /Variant:"Electric P8" /Auto XSettingsUnregisterAction /InstallFile:"C:\Program Files\EPLAN\DMS\AddIn\1.0.1\Cfg\Install.xml"
 
+
+"C:\Program Files\EPLAN29\Platform\2.9.4\Bin\EPLAN.exe" /Variant:"Electric P8" /Auto /Quiet:2 partslist /TYPE:EXPORTFROMSYSTEM /FORMAT:IXPartsImportExportEdz /EXPORTFILE:"E:\EPLAN_Temp\EDZExports\29PartDBExport.edz"
