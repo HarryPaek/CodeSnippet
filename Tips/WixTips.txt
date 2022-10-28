@@ -1,0 +1,21 @@
+1. Heat(Harvest) Directory with 'BeforeBuild'
+  
+  <PropertyGroup>
+    <DefineConstants>WTC_EplanServiceFiles_Dir=$(SolutionDir)\..\32.EPLANServer\01.Prod\EPLANService\EplanService</DefineConstants>
+  </PropertyGroup>
+  <Target Name="BeforeBuild">
+    <HeatDirectory OutputFile="$(ProjectDir)\WTCEplanServiceFiles.wxs"
+                   Directory="$(SolutionDir)\..\32.EPLANServer\01.Prod\EPLANService\EplanService"
+				   ComponentGroupName="WTCEplanServiceFiles"
+				   DirectoryRefId="EPLANSERVICE_"
+				   AutogenerateGuids="false"
+				   GenerateGuidsNow="true"
+				   PreprocessorVariable="var.WTC_EplanServiceFiles_Dir"
+				   SuppressRegistry="true"
+				   SuppressRootDirectory="true"
+				   ToolPath="$(WixToolPath)"
+				   NoLogo="true" />
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+
