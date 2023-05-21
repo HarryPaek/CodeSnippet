@@ -52,3 +52,10 @@ git push --set-upstream origin master
 git push <remote> <branch>
 
 git push origin UnityConfiguration
+
+
+# Git Hub Config (EPL HarryPaek)
+
+git config --local user.email "harrypaek@naver.com"
+
+git config --local user.name "Harry Paek"
