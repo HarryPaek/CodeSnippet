@@ -25,6 +25,8 @@ git config --local user.email "paek.harry@gmail.com"
 
 git config --local user.name "Harry Paek"
 
+git config --local remote.origin.url https://HarryPaek@github.com/HarryPaek/CodeSnippet.git
+
 
 # Git NAS01 Clone
 
