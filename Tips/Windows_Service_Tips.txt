@@ -1,0 +1,2 @@
+
+sc.exe create Smtp4dev binPath= "C:\Utils\Smtp4dev\Rnwood.Smtp4dev.exe --service"

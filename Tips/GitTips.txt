@@ -34,10 +34,6 @@ git clone ssh://ek050_harry@133.x.x.221:9022/~/GitRepo/EPLAN.git IntEPLAN
 
 git clone ssh://ek050_harry@133.x.x.221:9022/~/GitRepo/SKHynix.git IntHSK
 
-git config --local user.email "paek.harry@eplan.co.kr"
-
-git config --local user.name "Harry Paek"
-
 
 # Git 공통
 
@@ -56,8 +52,18 @@ git push <remote> <branch>
 git push origin UnityConfiguration
 
 
+==========================================================================
+### 사용 금지
+==========================================================================
 # Git Hub Config (EPL HarryPaek)
 
 git config --local user.email "harrypaek@naver.com"
+
+git config --local user.name "Harry Paek"
+
+
+# Git Hub Config (Centric)
+
+git config --local user.email "harry.paek@centricsoftware.com"
 
 git config --local user.name "Harry Paek"
