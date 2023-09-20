@@ -1,0 +1,42 @@
+Site: https://www.openssl.org/
+GitHub: https://github.com/openssl/openssl
+
+Binary Site: https://www.firedaemon.com/get-openssl
+
+: Copy the binaries specific to your platform
+: Copy 64-bit binaries
+robocopy x64 C:\OpenSSL /E
+
+: Copy 32-bit binaries
+robocopy x86 C:\OpenSSL /E
+
+: Copy the ssl folder
+robocopy ssl C:\OpenSSL\ssl /E
+
+
+C:\OpenSSL>dir /b
+bin
+include
+lib
+ssl
+
+: You can set OPENSSL_HOME=%~dp0 in a batch script for portable installs
+set OPENSSL_HOME=C:\OpenSSL
+set OPENSSL_CONF=%OPENSSL_HOME%\ssl\openssl.cnf
+set PATH=%OPENSSL_HOME%\bin;%PATH%
+cd /d %OPENSSL_HOME%
+openssl version -a
+
+: To create a certificate signing request and private key using the same environment variables as above :
+openssl genrsa -out server.key 4096
+openssl req -new -key server.key -out server.csr -sha256
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+: Connection Test
+
+openssl s_client -connect NEXTGEN:443
+openssl s_client -connect TAM-PROJECT:443
+openssl s_client -connect TB-PROJECT:443
+
+
+"C:\Program Files\Centric Software\C8\jdk-11.0.11+9\bin\keytool.exe" -list -keystore C8.pfx -storetype pkcs12
