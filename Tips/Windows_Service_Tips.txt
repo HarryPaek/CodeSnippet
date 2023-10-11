@@ -5,3 +5,7 @@ sc.exe create Smtp4dev binPath= "T:\Utils\Smtp4dev\Rnwood.Smtp4dev.exe --service
 
 
 sc.exe delete Smtp4dev
+
+powercfg -h off
+
+powercfg.exe /hibernate on
