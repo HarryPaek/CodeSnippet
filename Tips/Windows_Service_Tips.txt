@@ -9,3 +9,7 @@ sc.exe delete Smtp4dev
 powercfg -h off
 
 powercfg.exe /hibernate on
+
+// Laptop Serial Number
+
+wmic bios get serialnumber
