@@ -28,11 +28,14 @@ git config --local user.name "Harry Paek"
 git config --local remote.origin.url https://HarryPaek@github.com/HarryPaek/CodeSnippet.git
 
 
-# Git NAS01 Clone
+# Git Clone
 
 git clone ssh://ek050_harry@133.x.x.221:9022/~/GitRepo/EPLAN.git IntEPLAN
 
 git clone ssh://ek050_harry@133.x.x.221:9022/~/GitRepo/SKHynix.git IntHSK
+
+git clone https://HarryPaek@github.com/HarryPaek/Spike_CentricProjects.git
+
 
 
 # Git 공통
