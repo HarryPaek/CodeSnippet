@@ -70,3 +70,28 @@ git config --local user.name "Harry Paek"
 git config --local user.email "harry.paek@centricsoftware.com"
 
 git config --local user.name "Harry Paek"
+
+
+# Git Clones
+
+https://HarryPaek@github.com/HarryPaek/CodeSnippet.git
+
+https://HarryPaek@github.com/HarryPaek/Spike-JS_DoIt.git
+
+https://HarryPaek@github.com/HarryPaek/Spike-Python.git
+
+https://HarryPaek@github.com/HarryPaek/Spike_JS_Underscore.git
+
+https://HarryPaek@github.com/HarryPaek/Spike_Node_Backend.git
+
+https://HarryPaek@github.com/HarryPaek/Spike-JS_DeepDive.git
+
+https://HarryPaek@github.com/HarryPaek/Spike-English.git
+
+https://HarryPaek@github.com/HarryPaek/Spike-ChatGPT.git
+
+https://HarryPaek@github.com/HarryPaek/Spike-Blazor.git
+
+https://HarryPaek@github.com/HarryPaek/Spike_WebAPI_NET6.git
+
+https://HarryPaek@github.com/HarryPaek/CSharp80.git
