@@ -71,6 +71,15 @@ git config --local user.email "harry.paek@centricsoftware.com"
 
 git config --local user.name "Harry Paek"
 
+#Git Fixes
+
+remote.origin.url https://HarryPaek@github.com/EPLANKorea/Project-EPlatform.git
+
+remote.origin.url https://HarryPaek@github.com/EPLANKorea/Project-ProjectManager.git
+
+remote.origin.url https://HarryPaek@github.com/EPLANKorea/Project-WIA.git
+
+remote.origin.url https://HarryPaek@github.com/EPLANKorea/Project-Documentation.git
 
 # Git Clones
 
