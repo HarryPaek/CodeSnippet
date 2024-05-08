@@ -1,0 +1,9 @@
+UniqueByNodeNameAndManufacture
+
+isUnique(`Node Name`, ctkManufacture, Subtype)
+
+
+이미 등록된 Formulated Material 입니다.
+
+Formulated Material already registered.
+

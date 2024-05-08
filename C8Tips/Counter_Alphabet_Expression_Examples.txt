@@ -1,0 +1,45 @@
+
+Hello How-To Expression,
+   My customer has a material code based on a material family code + a counter behind on 3 digits: e.g: W123
+
+   problem: because they are reaching the end of possibilities, and they can't go on a counter on 4 digits (ERP constraints),
+            they want to continue the numeration inserting letters, so the counter would be able to run like that: 
+
+    from 001 --->999 --> A00
+    then from A00 --> A99 --> AA0
+              AA0--> AA9--> AAA --> AAB 
+              etc until ZZZ
+
+    And this counter should be done per material family.
+    Have you already implemented a such counter?
+ 
+Thanks for feedback
+
+Expression Examples
+=============================================================================================================================================
+==============================================================================================================================================
+block (
+    slChar09 = list("0","1","2","3","4","5","6","7","8","9"),
+    slCharAZ = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
+    slChar0Z = list("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
+    
+    iFactor2 = size(slChar0Z) * size(slChar0Z) * size(slChar0Z) * size(slChar0Z), // 36 * 36 * 36 * 36 = 1679616
+    iFactor3 = size(slChar0Z) * size(slChar0Z) * size(slChar0Z), // 36 * 36 * 36 = 46656
+    iFactor4 = size(slChar0Z) * size(slChar0Z), // 36 * 36 = 1296
+    iFactor5 = size(slChar0Z), // 36
+    iMax = iFactor2 * size(slChar0Z), // 36 * 36 * 36 * 36 * 36 = 60466176
+
+    iStart = 200000,
+    iKey = iStart + uniqueKey(attr("Node Type") + "_seq"),
+    //iKey = 60419520, // Test with this number = (ZZ000)
+
+    iPos1 = integer(floor(iKey / iFactor2)),
+    iPos2 = integer(floor((iKey - iPos1 * iFactor2) / iFactor3)),
+    iPos3 = integer(floor((iKey - iPos1 * iFactor2 - iPos2 * iFactor3) / iFactor4)),
+    iPos4 = integer(floor((iKey - iPos1 * iFactor2 - iPos2 * iFactor3 - iPos3 * iFactor4) / iFactor5)),
+    iPos5 = integer(floor((iKey - iPos1 * iFactor2 - iPos2 * iFactor3 - iPos3 * iFactor4 - iPos4 * iFactor5))),
+
+    //iKey + ", " + iPos1 + ", " + iPos2 + ", " + iPos3 + ", " + iPos4,  // Test positions
+    sKey = at(slChar0Z, iPos1) + at(slChar0Z, iPos2) + at(slChar0Z, iPos3) + at(slChar0Z, iPos4) + at(slChar0Z, iPos5)
+).ifNull("").string()
+
