@@ -37,6 +37,10 @@ git clone ssh://ek050_harry@133.x.x.221:9022/~/GitRepo/SKHynix.git IntHSK
 git clone https://HarryPaek@github.com/HarryPaek/Spike_CentricProjects.git
 
 
+# Git LFS Tips
+
+https://newsight.tistory.com/330
+
 
 # Git 공통
 
