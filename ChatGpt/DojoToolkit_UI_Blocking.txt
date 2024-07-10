@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dojo Toolkit UI Blocking Example</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css">
+    <script>dojoConfig = { parseOnLoad: true }</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+    <script>
+        require([
+            "dojo/parser", 
+            "dojo/request/xhr", 
+            "dijit/Dialog", 
+            "dojo/domReady!"
+        ], function(parser, xhr, Dialog){
+            parser.parse();
+
+            var loadingDialog = new Dialog({
+                title: "Processing",
+                content: "<p>Loading, please wait...</p>",
+                style: "width: 300px"
+            });
+
+            function blockUI() {
+                loadingDialog.show();
+                xhr("your-api-endpoint", {
+                    method: "GET",
+                    handleAs: "json"
+                }).then(function(response){
+                    // Process the response here
+                    console.log(response);
+                }).catch(function(err){
+                    console.error(err);
+                }).finally(function(){
+                    loadingDialog.hide();
+                });
+            }
+
+            // Assuming you have a button with id 'loadButton'
+            document.getElementById('loadButton').onclick = blockUI;
+        });
+    </script>
+</head>
+<body class="claro">
+    <button id="loadButton">Load Data</button>
+</body>
+</html>
