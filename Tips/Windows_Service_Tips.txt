@@ -13,3 +13,11 @@ powercfg.exe /hibernate on
 // Laptop Serial Number
 
 wmic bios get serialnumber
+
+
+- 라이선스 없는 윈도우 서버, 180일 초기화
+=======================================================================================
+slmgr.vbs /rearm
+(run in cmd as administrator, reboot necessary to activate)
+
+ 
