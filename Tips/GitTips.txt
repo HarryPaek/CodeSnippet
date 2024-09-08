@@ -119,3 +119,5 @@ https://HarryPaek@github.com/HarryPaek/Project_CTK.git
 https://HarryPaek@github.com/HarryPaek/Spike_CSharpConcurrency.git
 
 https://HarryPaek@github.com/HarryPaek/Project_ADERERROR.git
+
+https://HarryPaek@github.com/HarryPaek/Project_SAMSUNG.git
