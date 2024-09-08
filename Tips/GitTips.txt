@@ -110,6 +110,8 @@ https://HarryPaek@github.com/HarryPaek/Spike_WebAPI_NET6.git
 https://HarryPaek@github.com/HarryPaek/CSharp80.git
 
 
+https://HarryPaek@github.com/HarryPaek/Spike_CentricProjects.git
+
 https://HarryPaek@github.com/HarryPaek/Project_COSMECCA.git
 
 https://HarryPaek@github.com/HarryPaek/Project_CTK.git

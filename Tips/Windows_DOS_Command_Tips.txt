@@ -1,2 +1,5 @@
 
 dir "C:\folder\*" /s/b
+
+/* Chrome CORS request 가능하게 임시 설정 */
+chrome.exe --disable-web-security --user-data-dir="C:\Temp\chrome_dev"
