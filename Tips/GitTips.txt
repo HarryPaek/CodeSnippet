@@ -121,3 +121,12 @@ https://HarryPaek@github.com/HarryPaek/Spike_CSharpConcurrency.git
 https://HarryPaek@github.com/HarryPaek/Project_ADERERROR.git
 
 https://HarryPaek@github.com/HarryPaek/Project_SAMSUNG.git
+
+
+/* 삼성 프로젝트 */
+
+http://HarryPaek@71.52.2.205:3000/csidba/C8_SC.git SAMSUNG_C8_SC
+
+git config --local user.name "HarryPaek"
+
+git config --local user.email "cpaek.aspens.c@my-fast.net"
