@@ -1,0 +1,4 @@
+block(
+    format("{0, date, YYYY-MM-dd}", nowTime()),
+    format("{0, date, YYYY-MM-dd 'T'HH:mm:ss}", nowTime())
+)
