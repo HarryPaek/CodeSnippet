@@ -38,3 +38,12 @@ MSSQL Server 2019 Docker(2023.04.21)
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Test@123450" -e "TZ=Asia/Seoul" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
 
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Test@123450" -e "MSSQL_PID=Express" -e "TZ=Asia/Seoul" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+MSSQL Server 2022 Docker(2024.12.12)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Test@123450" -e "TZ=Asia/Seoul" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Test@123450" -e "MSSQL_PID=Express" -e "TZ=Asia/Seoul" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
