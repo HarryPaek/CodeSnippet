@@ -109,6 +109,11 @@ https://HarryPaek@github.com/HarryPaek/Spike_WebAPI_NET6.git
 
 https://HarryPaek@github.com/HarryPaek/CSharp80.git
 
+https://HarryPaek@github.com/HarryPaek/Spike_CSharp120.git
+
+https://HarryPaek@github.com/HarryPaek/Spike_ASPNETCore_NET9.git
+
+
 
 https://HarryPaek@github.com/HarryPaek/Spike_CentricProjects.git
 
