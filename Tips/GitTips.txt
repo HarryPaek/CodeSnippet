@@ -113,6 +113,8 @@ https://HarryPaek@github.com/HarryPaek/Spike_CSharp120.git
 
 https://HarryPaek@github.com/HarryPaek/Spike_ASPNETCore_NET9.git
 
+https://HarryPaek@github.com/HarryPaek/Spike_CSharpConcurrency.git
+
 
 
 https://HarryPaek@github.com/HarryPaek/Spike_CentricProjects.git
@@ -121,15 +123,9 @@ https://HarryPaek@github.com/HarryPaek/Project_COSMECCA.git
 
 https://HarryPaek@github.com/HarryPaek/Project_CTK.git
 
-https://HarryPaek@github.com/HarryPaek/Spike_CSharpConcurrency.git
-
 https://HarryPaek@github.com/HarryPaek/Project_ADERERROR.git
 
 https://HarryPaek@github.com/HarryPaek/Project_SAMSUNG.git
-
-https://HarryPaek@github.com/HarryPaek/Spike_CSharp120.git
-
-https://HarryPaek@github.com/HarryPaek/Spike_ASPNETCore_NET9.git
 
 
 /* 삼성 프로젝트 */
