@@ -85,6 +85,9 @@ remote.origin.url https://HarryPaek@github.com/EPLANKorea/Project-WIA.git
 
 remote.origin.url https://HarryPaek@github.com/EPLANKorea/Project-Documentation.git
 
+https://HarryPaek@github.com/EPLANKorea/Project-HHIEMD.git
+
+
 # Git Clones
 
 https://HarryPaek@github.com/HarryPaek/CodeSnippet.git

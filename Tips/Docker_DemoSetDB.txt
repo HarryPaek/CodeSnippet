@@ -85,3 +85,20 @@ DOCKER2 =
 */
 
 runas /user:KRSEO6475\HarryPaek "Docker Desktop.exe"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Oracle 19.3c from banglamon/oracle193db(2025.01.14)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+docker pull banglamon/oracle193db:19.3.0-ee
+
+docker run -d --name Oracle193db -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true -e "TZ=Asia/Seoul" -e ORACLE_SID=DemoDB -e ORACLE_PDB=DemoPDB -e ORACLE_PWD=Oracle@123450 -v S:\Temp\OracleData:/opt/oracle/oradata banglamon/oracle193db:19.3.0-ee
+
+docker run -d --name Oracle193db -p 22:22 -p 1521:1521 -p 8080:8080 -e ORACLE_ALLOW_REMOTE=true -e "TZ=Asia/Seoul" -e ORACLE_SID=DemoDB -e ORACLE_PDB=DemoPDB -e ORACLE_PWD=Oracle@123450 banglamon/oracle193db:19.3.0-ee
+
+alter session set container=DemoPDB;
+
+create user docker identified by "docker123";
+
+grant connect, resource to docker;
+
+alter user docker quota unlimited on users;
