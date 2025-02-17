@@ -10,7 +10,7 @@ REM SET TOMCAT_HOME=D:\JavaTool\Tomcat 4.1
 REM SET AXIS_HOME=%TOMCAT_HOME%\webapps\axis
 REM SET AXIS_LIB=%AXIS_HOME%\WEB-INF\lib
 
-SET PATH=%JAVA_HOME%\Bin;%JAVA_HOME%\Jre\Bin;%ANT_HOME%\Bin;C:\WINNT\system32;C:\WINNT
+SET PATH=%JAVA_HOME%\Bin;%JAVA_HOME%\Jre\Bin;%ANT_HOME%\Bin;C:\Windows\System32;C:\Windows;C:\Windows\System32\WindowsPowerShell\v1.0
 SET CLASSPATH=.;%JAVA_HOME%\lib\tools.jar;%ORA_HOME%\jdbc\lib\classes12.jar;%ORA_HOME%\jdbc\lib\nls_charset12.jar;
 REM SET CLASSPATH=%CLASSPATH%;%LOG4J_HOME%\dist\lib\log4j-1.2.14.jar;
 REM SET CLASSPATH=%CLASSPATH%;%JCOMMON_HOME%\jcommon-1.0.6.jar;%JCHART_HOME%\lib\jfreechart-1.0.2.jar;
